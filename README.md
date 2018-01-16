@@ -1,5 +1,6 @@
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
-#nookies 0x1F36A 0x1F36A 0x1F36A
+
+# nookies :cookie: :cookie: :cookie:
 A collection of cookie helpers for Next.js
 
  - SSR support, for setter, parser and destory
