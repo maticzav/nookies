@@ -1,0 +1,43 @@
+{
+   "name": "nookies",
+   "version": "1.0.0",
+   "main": "dist/index.js",
+   "repository": "maticzav/nookies",
+   "author": {
+      "name": "Matic Zavadlal",
+      "email": "matic.zavadlal@gmail.com"
+   },
+   "scripts": {
+      "pre-publish": "babel --out-file dist/index.js index.js",
+      "test": "xo"
+   },
+   "dependencies": {
+      "cookie": "^0.3.1"
+   },
+   "devDependencies": {
+      "babel-cli": "^6.26.0",
+      "babel-eslint": "^8.2.1",
+      "babel-preset-env": "^1.6.1",
+      "eslint": "^4.15.0",
+      "eslint-config-xo": "^0.19.0",
+      "xo": "^0.18.2"
+   },
+   "keywords": [
+      "cookie",
+      "cookies",
+      "next",
+      "nextjs",
+      "js",
+      "auth",
+      "destory",
+      "parse",
+      "create",
+      "nookies"
+   ],
+   "xo": {
+      "parser": "babel-eslint",
+      "semicolon": false,
+      "space": 3
+   },
+   "license": "MIT"
+}
