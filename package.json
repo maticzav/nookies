@@ -1,6 +1,7 @@
 {
    "name": "nookies",
-   "version": "1.0.0",
+   "description": "A set of cookie helpers for Next.js",
+   "version": "1.0.1",
    "main": "dist/index.js",
    "repository": "maticzav/nookies",
    "author": {
