@@ -11,6 +11,8 @@ Setting and destorying cookies also works on server-side.
 
 ### Quick start
 ```js
+import { parseCookies, setCooie, destroyCookie } from 'nookies 
+
 // Parse
 parseCookies(ctx)
 
