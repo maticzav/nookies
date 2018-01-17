@@ -13,17 +13,27 @@ Setting and destorying cookies also works on server-side.
 ```js
 import { parseCookies, setCooie, destroyCookie } from 'nookies' 
 
-// Parse
-parseCookies(ctx)
+export default class Me extends React.Component {
+   static async getInitialProps(ctx) {
+      // Parse
+      parseCookies(ctx)
 
-// Set
-setCookie(ctx, 'token', token, {
-   maxAge: 30 * 24 * 60 * 60,
-   path: '/'
-})
+      // Set
+      setCookie(ctx, 'token', token, {
+         maxAge: 30 * 24 * 60 * 60,
+         path: '/'
+      })
 
-// Destory
-destroyCookie(ctx, 'token')
+      // Destory
+      destroyCookie(ctx, 'token')
+   }
+
+   render() {
+      return (
+         <div>My profile</div>
+      )
+   }
+}
 ```
 
 ### Reference
