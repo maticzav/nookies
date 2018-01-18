@@ -11,7 +11,7 @@ Setting and destorying cookies also works on server-side.
 
 ### Quick start
 ```js
-import { parseCookies, setCooie, destroyCookie } from 'nookies' 
+import { parseCookies, setCookie, destroyCookie } from 'nookies' 
 
 export default class Me extends React.Component {
    static async getInitialProps(ctx) {
