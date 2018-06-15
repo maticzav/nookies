@@ -1,15 +1,17 @@
-[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
-
 # nookies :cookie: :cookie: :cookie:
+
+[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo) [![CircleCI](https://circleci.com/gh/maticzav/nookies/tree/master.svg?style=shield)](https://circleci.com/gh/maticzav/nookies/tree/master) [![npm version](https://badge.fury.io/js/nookies.svg)](https://badge.fury.io/js/nookies)
+
 A collection of cookie helpers for Next.js
 
- - SSR support, for setter, parser and destory
- - super light
- - perfect for authentication
+- SSR support, for setter, parser and destory
+- super light
+- perfect for authentication
 
 Setting and destorying cookies also works on server-side.
 
-### Quick start
+## Quick start
+
 ```js
 import { parseCookies, setCookie, destroyCookie } from 'nookies'
 
