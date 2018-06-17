@@ -40,3 +40,10 @@ export function destroyCookie(ctx = {}, name) {
 
    return {}
 }
+export default {
+  set: (ctx, name, value, options={}) => {
+    setCookie(ctx, name, value, options)
+  },
+  get: (ctx, options) => parseCookies(ctx, options),
+  destroy: (ctx, name) => destroyCookie(ctx, name)
+}

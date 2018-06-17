@@ -13,57 +13,82 @@ Setting and destorying cookies also works on server-side.
 ## Quick start
 
 ```js
-import { parseCookies, setCookie, destroyCookie } from "nookies";
+import { parseCookies, setCookie, destroyCookie } from 'nookies'
 
 export default class Me extends React.Component {
-  static async getInitialProps(ctx) {
-    // Parse
-    parseCookies(ctx);
+   static async getInitialProps(ctx) {
 
-    // Set
-    setCookie(ctx, "token", token, {
-      maxAge: 30 * 24 * 60 * 60,
-      path: "/"
-    });
+      // Parse
+      parseCookies(ctx)
 
-    // Destory
-    destroyCookie(ctx, "token");
-  }
+      // Set
+      setCookie(ctx, 'token', token, {
+         maxAge: 30 * 24 * 60 * 60,
+         path: '/'
+      })
 
-  render() {
-    return <div>My profile</div>;
-  }
+      // Destory
+      destroyCookie(ctx, 'token')
+   }
+
+   render() {
+      return (
+         <div>My profile</div>
+      )
+   }
+}
+```
+OR
+```js
+import nookies from 'nookies'
+
+export default class Me extends React.Component {
+   static async getInitialProps(ctx) {
+
+      // Parse
+      nookies.get(ctx)
+
+      // Set
+      nookies.set(ctx, 'token', token, {
+         maxAge: 30 * 24 * 60 * 60,
+         path: '/'
+      })
+
+      // Destory
+      nookies.destroy(ctx, 'token')
+   }
+
+   render() {
+      return (
+         <div>My profile</div>
+      )
+   }
 }
 ```
 
 ### Reference
+#### `parseCookies(ctx, options) or cookies.get(ctx, options)`
+ - __ctx:__ `Next.js context`
+ - __options:__
+   - __decode:__ `a custom resolver function (default: decodeURIComponent)`
 
-#### `parseCookies(ctx, options)`
+#### `setCookie(ctx, name, value, options) or cookies.set(ctx, name, value, options)`
+ - __ctx:__ `(Next.js context)`
+ - __name:__ cookie name
+ - __value:__ cookie value
+ - __options:__
+   - __domain__
+   - __encode__
+   - __expires__
+   - __httpOnly__
+   - __maxAge__
+   - __path__
+   - __sameSite__
+   - __secure__
 
-- **ctx:** `Next.js context`
-- **options:**
-  - **decode:** `a custom resolver function (default: decodeURIComponent)`
-
-#### `setCookie(ctx, name, value, options)`
-
-- **ctx:** `(Next.js context)`
-- **name:** cookie name
-- **value:** cookie value
-- **options:**
-  - **domain**
-  - **encode**
-  - **expires**
-  - **httpOnly**
-  - **maxAge**
-  - **path**
-  - **sameSite**
-  - **secure**
-
-#### `destroyCookie(ctx, name)`
-
-- **ctx:** (Next.js context)
-- **name:** cookie name
+#### `destroyCookie(ctx, name) or cookies.destroy(ctx, 'token')`
+ - __ctx:__ (Next.js context)
+ - __name:__ cookie name
 
 ## License
-
 MIT
