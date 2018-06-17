@@ -10,8 +10,9 @@
   },
   "scripts": {
     "prepublish": "npm run test",
-    "build": "babel --out-file dist/index.js index.js",
-    "test": "npm run build && xo",
+    "build": "babel src --out-dir dist",
+    "lint": " prettier-check src/**/*.js",
+    "test": "npm run build && npm run lint",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
@@ -23,7 +24,8 @@
     "babel-preset-env": "^1.6.1",
     "eslint": "^4.15.0",
     "eslint-config-xo": "^0.19.0",
-    "xo": "^0.18.2",
+    "prettier": "^1.13.5",
+    "prettier-check": "^2.0.0",
     "semantic-release": "^15.5.2"
   },
   "keywords": [
