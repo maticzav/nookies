@@ -1,13 +1,13 @@
 {
-   "minified": true,
-   "presets": [
-      [
-         "babel-preset-env",
-         {
-            "targets": {
-               "node": "6.10"
-            }
-         }
-      ]
-   ]
+  "minified": true,
+  "presets": [
+    [
+      "babel-preset-env",
+      {
+        "targets": {
+          "browsers": ["ie >= 11"]
+        }
+      }
+    ]
+  ]
 }
