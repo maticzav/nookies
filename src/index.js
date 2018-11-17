@@ -15,7 +15,15 @@ export function parseCookies(ctx = {}, options = {}) {
 
 export function setCookie(ctx = {}, name, value, options = {}) {
   if (ctx && ctx.res) {
-    ctx.res.setHeader('Set-Cookie', cookie.serialize(name, value, options))
+    let cookies = ctx.res.getHeader('Set-Cookie') || []
+
+    if (typeof cookies === 'string') {
+      cookies = [cookies]
+    }
+
+    cookies.push(cookie.serialize(name, value, options))
+
+    ctx.res.setHeader('Set-Cookie', cookies)
   }
 
   if (process.browser) {
@@ -27,12 +35,19 @@ export function setCookie(ctx = {}, name, value, options = {}) {
 
 export function destroyCookie(ctx = {}, name) {
   if (ctx && ctx.res) {
-    ctx.res.setHeader(
-      'Set-Cookie',
+    let cookies = ctx.res.getHeader('set-cookie') || []
+
+    if (typeof cookies === 'string') {
+      cookies = [cookies]
+    }
+
+    cookies.push(
       cookie.serialize(name, '', {
         maxAge: -1,
       }),
     )
+
+    ctx.res.setHeader('Set-Cookie', cookies)
   }
 
   if (process.browser) {
