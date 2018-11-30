@@ -1,3 +1,5 @@
+NOTE: This repository was forked to fix a bug. We hope to get the bug upstream and remove the repository.
+
 # nookies :cookie: :cookie: :cookie:
 
 [![CircleCI](https://circleci.com/gh/maticzav/nookies/tree/master.svg?style=shield)](https://circleci.com/gh/maticzav/nookies/tree/master) [![npm version](https://badge.fury.io/js/nookies.svg)](https://badge.fury.io/js/nookies)
