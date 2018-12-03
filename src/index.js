@@ -63,5 +63,5 @@ export default {
     setCookie(ctx, name, value, options)
   },
   get: (ctx, options) => parseCookies(ctx, options),
-  destroy: (ctx, name) => destroyCookie(ctx, name),
+  destroy: (ctx, name, options = {}) => destroyCookie(ctx, name, options),
 }
