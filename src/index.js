@@ -42,14 +42,14 @@ export function destroyCookie(ctx = {}, name, options = {}) {
     }
 
     cookies.push(
-      cookie.serialize(name, '', Object.assign(options, {maxAge: -1})),
+      cookie.serialize(name, '', Object.assign({}, options, {maxAge: -1})),
     )
 
     ctx.res.setHeader('Set-Cookie', cookies)
   }
 
   if (process.browser) {
-    document.cookie = cookie.serialize(name, '', Object.assign(options, {maxAge: -1}))
+    document.cookie = cookie.serialize(name, '', Object.assign({}, options, {maxAge: -1}))
   }
 
   return {}
