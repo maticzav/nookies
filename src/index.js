@@ -33,7 +33,7 @@ export function setCookie(ctx = {}, name, value, options = {}) {
   return {}
 }
 
-export function destroyCookie(ctx = {}, name) {
+export function destroyCookie(ctx = {}, name, options = {}) {
   if (ctx && ctx.res) {
     let cookies = ctx.res.getHeader('set-cookie') || []
 
@@ -43,6 +43,7 @@ export function destroyCookie(ctx = {}, name) {
 
     cookies.push(
       cookie.serialize(name, '', {
+        ...options,
         maxAge: -1,
       }),
     )
@@ -52,6 +53,7 @@ export function destroyCookie(ctx = {}, name) {
 
   if (process.browser) {
     document.cookie = cookie.serialize(name, '', {
+      ...options,
       maxAge: -1,
     })
   }
