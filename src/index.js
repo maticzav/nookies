@@ -42,20 +42,14 @@ export function destroyCookie(ctx = {}, name, options = {}) {
     }
 
     cookies.push(
-      cookie.serialize(name, '', {
-        maxAge: -1,
-        options,
-      }),
+      cookie.serialize(name, '', Object.assign({}, options, {maxAge: -1})),
     )
 
     ctx.res.setHeader('Set-Cookie', cookies)
   }
 
   if (process.browser) {
-    document.cookie = cookie.serialize(name, '', {
-      maxAge: -1,
-      options,
-    })
+    document.cookie = cookie.serialize(name, '', Object.assign({}, options, {maxAge: -1}))
   }
 
   return {}
@@ -65,5 +59,5 @@ export default {
     setCookie(ctx, name, value, options)
   },
   get: (ctx, options) => parseCookies(ctx, options),
-  destroy: (ctx, name) => destroyCookie(ctx, name),
+  destroy: (ctx, name, options = {}) => destroyCookie(ctx, name, options),
 }
