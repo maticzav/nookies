@@ -26,6 +26,12 @@ export default class Me extends React.Component {
       path: '/',
     })
 
+    // Append
+    appendCookie(ctx, 'additionValue', additional, {
+      maxAge: 30 * 24 * 60 * 60,
+      path: '/',
+    })
+
     // Destory
     destroyCookie(ctx, 'token')
   }
@@ -71,6 +77,21 @@ export default class Me extends React.Component {
   - **decode:** `a custom resolver function (default: decodeURIComponent)`
 
 #### `setCookie(ctx, name, value, options) or cookies.set(ctx, name, value, options)`
+
+- **ctx:** `(Next.js context)`
+- **name:** cookie name
+- **value:** cookie value
+- **options:**
+  - **domain**
+  - **encode**
+  - **expires**
+  - **httpOnly**
+  - **maxAge**
+  - **path**
+  - **sameSite**
+  - **secure**
+
+#### `appendCookie(ctx, name, value, options)`
 
 - **ctx:** `(Next.js context)`
 - **name:** cookie name
