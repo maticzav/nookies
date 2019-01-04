@@ -13,6 +13,19 @@ export function parseCookies(ctx = {}, options = {}) {
   return {}
 }
 
+
+export function appendCookie(ctx = {}, name, value, options = {}) {
+  if (ctx && ctx.res) {
+    ctx.res.append('Set-Cookie', cookie.serialize(name, value, options))
+  }
+
+  if (process.browser) {
+    document.cookie = `${cookie.serialize(name, value, options)}; ${document.cookie}`
+  }
+
+  return {}
+}
+
 export function setCookie(ctx = {}, name, value, options = {}) {
   if (ctx && ctx.res) {
     let cookies = ctx.res.getHeader('Set-Cookie') || []
