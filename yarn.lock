@@ -2226,10 +2226,10 @@ prettier-check@2.0.0:
   dependencies:
     execa "^0.6.0"
 
-prettier@1.13.5:
-  version "1.13.5"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.13.5.tgz#7ae2076998c8edce79d63834e9b7b09fead6bfd0"
-  integrity sha512-4M90mfvLz6yRf2Dhzd+xPIE6b4xkI8nHMJhsSm9IlfG17g6wujrrm7+H1X8x52tC4cSNm6HmuhCUSNe6Hd5wfw==
+prettier@1.13.7:
+  version "1.13.7"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.13.7.tgz#850f3b8af784a49a6ea2d2eaa7ed1428a34b7281"
+  integrity sha512-KIU72UmYPGk4MujZGYMFwinB7lOf2LsDNGSOC8ufevsrPLISrZbNJlWstRi3m0AMuszbH+EFSQ/r6w56RSPK6w==
 
 process-nextick-args@~1.0.6:
   version "1.0.7"
