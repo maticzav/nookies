@@ -9,21 +9,33 @@
     "email": "matic.zavadlal@gmail.com"
   },
   "scripts": {
-    "prepublish": "npm run test",
-    "build": "babel src --out-dir dist",
-    "lint": " prettier-check src/**/*.js",
-    "test": "npm run build && npm run lint",
+    "clean": "rimraf dist",
+    "compile": "tsc -d",
+    "pretest": "npm run clean && npm run compile",
+    "test": "echo 'test'",
+    "posttest": "npm run lint",
+    "lint": "tslint --project tsconfig.json {src}/**/*.ts && prettier-check --ignore-path .gitignore src/**/*.ts",
+    "prettier": "prettier --write --ignore-path .gitignore src/**/*.ts",
+    "prepublishOnly": "npm run compile",
+    "prerelease": "npm run test",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
     "cookie": "^0.3.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "@types/cookie": "^0.3.1",
+    "@types/next": "^7.0.7",
+    "@types/node": "^10.11.0",
     "prettier": "^1.13.5",
     "prettier-check": "^2.0.0",
-    "semantic-release": "^15.5.2"
+    "rimraf": "^2.6.2",
+    "semantic-release": "^15.5.2",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.0.3"
   },
   "keywords": [
     "cookie",

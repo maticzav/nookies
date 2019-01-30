@@ -1,0 +1,7 @@
+{
+  "extends": ["tslint-config-standard", "tslint-config-prettier"],
+  "rules": {
+    "no-use-before-declare": false,
+    "space-before-function-paren": false
+  }
+}
