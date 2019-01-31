@@ -13,13 +13,13 @@ const isBrowser = () => typeof window !== 'undefined'
  * @param a first Cookie for comparision
  * @param b second Cookie for comparision
  */
-function areCookiesEqual(a: Cookie, b: Cookie) {
+function areCookiesEqual(a: Cookie, b: Cookie & CookieSerializeOptions ) {
   return (
-    a.name !== b.name ||
-    a.domain !== b.domain ||
-    a.path !== b.path ||
-    a.httpOnly !== b.httpOnly ||
-    a.secure !== b.secure
+    a.name === b.name &&
+    a.domain === b.domain &&
+    a.path === b.path &&
+    a.httpOnly === b.httpOnly &&
+    a.secure === b.secure
   )
 }
 
