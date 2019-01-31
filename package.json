@@ -21,12 +21,14 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "cookie": "^0.3.1"
+    "cookie": "^0.3.1",
+    "set-cookie-parser": "^2.2.1"
   },
   "devDependencies": {
     "@types/cookie": "0.3.2",
     "@types/next": "7.0.7",
     "@types/node": "10.11.7",
+    "@types/set-cookie-parser": "^0.0.4",
     "prettier": "1.13.7",
     "prettier-check": "2.0.0",
     "rimraf": "2.6.3",
