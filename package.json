@@ -28,7 +28,7 @@
     "@types/cookie": "0.3.2",
     "@types/next": "7.0.8",
     "@types/node": "10.12.21",
-    "@types/set-cookie-parser": "^0.0.4",
+    "@types/set-cookie-parser": "0.0.4",
     "prettier": "1.16.3",
     "prettier-check": "2.0.0",
     "rimraf": "2.6.3",
