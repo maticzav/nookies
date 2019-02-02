@@ -1,7 +1,51 @@
 import * as cookie from 'cookie'
 import * as next from 'next'
+import * as setCookieParser from 'set-cookie-parser'
+import { Cookie } from 'set-cookie-parser'
+import { CookieSerializeOptions } from 'cookie'
 
 const isBrowser = () => typeof window !== 'undefined'
+
+/**
+ * Compare the cookie and return true if the cookies has equivalent
+ * options and the cookies would be overwritten in the browser storage.
+ *
+ * @param a first Cookie for comparision
+ * @param b second Cookie for comparision
+ */
+function areCookiesEqual(a: Cookie, b: Cookie & CookieSerializeOptions ) {
+  return (
+    a.name === b.name &&
+    a.domain === b.domain &&
+    a.path === b.path &&
+    a.httpOnly === b.httpOnly &&
+    a.secure === b.secure
+  )
+}
+
+/**
+ * Create an instance of the Cookie interface
+ *
+ * @param name name of the Cookie
+ * @param value value of the Cookie
+ * @param options Cookie options
+ */
+function createCookie(
+  name: string,
+  value: string,
+  options: CookieSerializeOptions,
+): Cookie {
+  return {
+    name: name,
+    expires: options.expires,
+    maxAge: options.maxAge,
+    secure: options.secure,
+    httpOnly: options.httpOnly,
+    domain: options.domain,
+    value: value,
+    path: options.path,
+  }
+}
 
 /**
  *
@@ -46,9 +90,26 @@ export function setCookie(
     if (typeof cookies === 'string') cookies = [cookies]
     if (typeof cookies === 'number') cookies = []
 
-    cookies.push(cookie.serialize(name, value, options))
+    const parsedCookies = setCookieParser.parse(cookies)
 
-    ctx.res.setHeader('Set-Cookie', cookies)
+    let cookiesToSet: string[] = []
+    parsedCookies.forEach((parsedCookie: Cookie) => {
+      if (!areCookiesEqual(parsedCookie, createCookie(name, value, options))) {
+        cookiesToSet.push(
+          cookie.serialize(parsedCookie.name, parsedCookie.value, {
+            domain: parsedCookie.domain,
+            path: parsedCookie.path,
+            httpOnly: parsedCookie.httpOnly,
+            secure: parsedCookie.secure,
+            maxAge: parsedCookie.maxAge,
+            expires: parsedCookie.expires,
+          }),
+        )
+      }
+    })
+
+    cookiesToSet.push(cookie.serialize(name, value, options))
+    ctx.res.setHeader('Set-Cookie', cookiesToSet)
   }
 
   if (isBrowser()) {
