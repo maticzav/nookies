@@ -1,3 +1,7 @@
 {
-  "extends": ["config:base", "docker:disable", ":automergePatch"]
+  "extends": ["config:base", "docker:disable"],
+  "automerge": true,
+  "major": {
+    "automerge": false
+  }
 }
