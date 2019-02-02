@@ -191,7 +191,7 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/set-cookie-parser@^0.0.4":
+"@types/set-cookie-parser@0.0.4":
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/@types/set-cookie-parser/-/set-cookie-parser-0.0.4.tgz#7beaf8a79c58f2de271c03150593d587ee2eb951"
   integrity sha512-svBklLAOuXy+Rmh3PGBCRTechzxOqQwBqStRPhxbO1+272FmQiGVovcpbArcbD4bht7JrxsPWIOsvbi330soHg==
