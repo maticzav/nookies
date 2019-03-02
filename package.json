@@ -27,7 +27,7 @@
   "devDependencies": {
     "@types/cookie": "0.3.2",
     "@types/next": "7.0.9",
-    "@types/node": "10.12.27",
+    "@types/node": "10.12.29",
     "@types/set-cookie-parser": "0.0.4",
     "prettier": "1.16.4",
     "prettier-check": "2.0.0",
