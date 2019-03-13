@@ -18,7 +18,7 @@
     "lint": "tslint --project tsconfig.json {src}/**/*.ts && prettier-check --ignore-path .gitignore src/**/*.ts",
     "prettier": "prettier --write --ignore-path .gitignore src/**/*.ts",
     "prepublishOnly": "npm run compile",
-    "prerelease": "npm run clean && npm run test",
+    "prerelease": "npm run test",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
