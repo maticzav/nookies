@@ -10,18 +10,20 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "compile": "webpack",
+    "compile": "tsc -d && yarn run minify",
+    "minify": "jsmin -o dist/index.min.js dist/index.js",
     "pretest": "npm run clean && npm run compile",
     "test": "echo 'test'",
     "posttest": "npm run lint",
     "lint": "tslint --project tsconfig.json {src}/**/*.ts && prettier-check --ignore-path .gitignore src/**/*.ts",
     "prettier": "prettier --write --ignore-path .gitignore src/**/*.ts",
     "prepublishOnly": "npm run compile",
-    "prerelease": "npm run test",
+    "prerelease": "npm run clean && npm run test",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
     "cookie": "^0.3.1",
+    "jsmin": "^1.0.1",
     "set-cookie-parser": "^2.2.1"
   },
   "devDependencies": {
@@ -40,10 +42,7 @@
     "tslint": "5.14.0",
     "tslint-config-prettier": "1.18.0",
     "tslint-config-standard": "8.0.1",
-    "typescript": "3.3.3333",
-    "uglifyjs-webpack-plugin": "2.1.2",
-    "webpack": "4.29.6",
-    "webpack-cli": "3.2.3"
+    "typescript": "3.3.3333"
   },
   "keywords": [
     "cookie",
