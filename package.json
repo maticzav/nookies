@@ -3,6 +3,7 @@
   "description": "A set of cookie helpers for Next.js",
   "version": "0.0.0-semantic-release",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "maticzav/nookies",
   "author": {
     "name": "Matic Zavadlal",
