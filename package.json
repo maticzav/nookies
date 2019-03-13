@@ -3,6 +3,7 @@
   "description": "A set of cookie helpers for Next.js",
   "version": "0.0.0-semantic-release",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "maticzav/nookies",
   "author": {
     "name": "Matic Zavadlal",
@@ -10,7 +11,8 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "compile": "webpack",
+    "compile": "tsc -d && yarn run minify",
+    "minify": "jsmin -o dist/index.min.js dist/index.js",
     "pretest": "npm run clean && npm run compile",
     "test": "echo 'test'",
     "posttest": "npm run lint",
@@ -22,6 +24,7 @@
   },
   "dependencies": {
     "cookie": "^0.3.1",
+    "jsmin": "^1.0.1",
     "set-cookie-parser": "^2.2.1"
   },
   "devDependencies": {
@@ -40,10 +43,7 @@
     "tslint": "5.14.0",
     "tslint-config-prettier": "1.18.0",
     "tslint-config-standard": "8.0.1",
-    "typescript": "3.3.3333",
-    "uglifyjs-webpack-plugin": "2.1.2",
-    "webpack": "4.29.6",
-    "webpack-cli": "3.2.3"
+    "typescript": "3.3.3333"
   },
   "keywords": [
     "cookie",
