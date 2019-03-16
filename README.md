@@ -4,13 +4,15 @@
 
 A collection of cookie helpers for Next.js
 
-- SSR support, for setter, parser and destory
+- SSR support, for setter, parser and destroy
 - super light
 - perfect for authentication
 
-Setting and destorying cookies also works on server-side.
+Setting and destroying cookies also works on server-side.
 
 ## Quick start
+
+### SSR cookies
 
 ```js
 import { parseCookies, setCookie, destroyCookie } from 'nookies'
@@ -62,15 +64,35 @@ export default class Me extends React.Component {
 }
 ```
 
+### Cookies on the client
+
+```js
+import nookies from 'nookies'
+
+export default class Me extends React.Component {
+  handleClick = () => {
+    // Simply omit context parameter.
+    const cookies = parseCookies()
+    console.log({ cookies })
+  }
+
+  render() {
+    return <button onClick={this.handleClick}>Click Me!</button>
+  }
+}
+```
+
 ### Reference
 
-#### `parseCookies(ctx, options) or cookies.get(ctx, options)`
+> For client side usage, omit the `ctx` parameter. You can do so by setting it to an empty object (`{}`).
+
+#### `parseCookies(ctx, options)` or `cookies.get(ctx, options)`
 
 - **ctx:** `Next.js context`
 - **options:**
   - **decode:** `a custom resolver function (default: decodeURIComponent)`
 
-#### `setCookie(ctx, name, value, options) or cookies.set(ctx, name, value, options)`
+#### `setCookie(ctx, name, value, options)` or `cookies.set(ctx, name, value, options)`
 
 - **ctx:** `(Next.js context)`
 - **name:** cookie name
@@ -85,7 +107,7 @@ export default class Me extends React.Component {
   - **sameSite**
   - **secure**
 
-#### `destroyCookie(ctx, name) or cookies.destroy(ctx, 'token')`
+#### `destroyCookie(ctx, name)` or `cookies.destroy(ctx, 'token')`
 
 - **ctx:** (Next.js context)
 - **name:** cookie name
