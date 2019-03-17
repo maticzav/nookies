@@ -12,6 +12,8 @@ Setting and destroying cookies also works on server-side.
 
 ## Quick start
 
+`npm install --save nookies`
+
 ### SSR cookies
 
 ```js
