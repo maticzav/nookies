@@ -55,7 +55,7 @@ function createCookie(
  * @param options
  */
 export function parseCookies(
-  ctx: next.NextContext,
+  ctx?: next.NextContext | null | undefined,
   options?: cookie.CookieParseOptions,
 ) {
   if (ctx && ctx.req && ctx.req.headers.cookie) {
@@ -79,7 +79,7 @@ export function parseCookies(
  * @param options
  */
 export function setCookie(
-  ctx: next.NextContext,
+  ctx: next.NextContext | null | undefined,
   name: string,
   value: string,
   options: cookie.CookieSerializeOptions,
@@ -128,7 +128,7 @@ export function setCookie(
  * @param options
  */
 export function destroyCookie(
-  ctx: next.NextContext,
+  ctx: next.NextContext | null | undefined,
   name: string,
   options: cookie.CookieSerializeOptions,
 ) {
