@@ -59,7 +59,7 @@ export function parseCookies(
   options?: cookie.CookieParseOptions,
 ) {
   if (ctx && ctx.req && ctx.req.headers.cookie) {
-    return cookie.parse(ctx.req.headers.cookie as string, options)
+    return cookie.parse(ctx.req.headers.cookie, options)
   }
 
   if (isBrowser()) {
@@ -128,7 +128,7 @@ export function setCookie(
  * @param options
  */
 export function destroyCookie(
-  ctx: next.NextContext,
+  ctx: next.NextContext | null | undefined,
   name: string,
   options: cookie.CookieSerializeOptions,
 ) {
