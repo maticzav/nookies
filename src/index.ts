@@ -59,7 +59,7 @@ export function parseCookies(
   options?: cookie.CookieParseOptions,
 ) {
   if (ctx && ctx.req && ctx.req.headers.cookie) {
-    return cookie.parse(ctx.req.headers.cookie, options)
+    return cookie.parse(ctx.req.headers.cookie as string, options)
   }
 
   if (isBrowser()) {
