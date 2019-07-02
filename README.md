@@ -30,7 +30,7 @@ export default class Me extends React.Component {
       path: '/',
     })
 
-    // Destory
+    // Destroy
     destroyCookie(ctx, 'token')
   }
 
