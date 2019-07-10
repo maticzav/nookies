@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@types/cookie": "0.3.3",
-    "@types/next": "8.0.5",
+    "@types/next": "8.0.6",
     "@types/node": "10.14.12",
     "@types/set-cookie-parser": "0.0.5",
     "husky": "3.0.0",
