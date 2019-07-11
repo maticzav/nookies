@@ -130,9 +130,9 @@ export function setCookie(
 export function destroyCookie(
   ctx: next.NextContext | null | undefined,
   name: string,
-  options: cookie.CookieSerializeOptions,
+  options?: cookie.CookieSerializeOptions,
 ) {
-  options = { ...options, maxAge: -1 }
+  const opts = { ...(options || {}), maxAge: -1 }
 
   if (ctx && ctx.res) {
     let cookies = ctx.res.getHeader('set-cookie') || []
@@ -140,13 +140,13 @@ export function destroyCookie(
     if (typeof cookies === 'string') cookies = [cookies]
     if (typeof cookies === 'number') cookies = []
 
-    cookies.push(cookie.serialize(name, '', options))
+    cookies.push(cookie.serialize(name, '', opts))
 
     ctx.res.setHeader('Set-Cookie', cookies)
   }
 
   if (isBrowser()) {
-    document.cookie = cookie.serialize(name, '', options)
+    document.cookie = cookie.serialize(name, '', opts)
   }
 
   return {}
