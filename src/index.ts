@@ -58,7 +58,7 @@ export function parseCookies(
   ctx?: next.NextContext | null | undefined,
   options?: cookie.CookieParseOptions,
 ) {
-  if (ctx && ctx.req && ctx.req.headers.cookie) {
+  if (ctx && ctx.req && ctx.req.headers && ctx.req.headers.cookie) {
     return cookie.parse(ctx.req.headers.cookie as string, options)
   }
 
@@ -84,7 +84,7 @@ export function setCookie(
   value: string,
   options: cookie.CookieSerializeOptions,
 ) {
-  if (ctx && ctx.res) {
+  if (ctx && ctx.res && ctx.res.getHeader && ctx.res.setHeader) {
     let cookies = ctx.res.getHeader('Set-Cookie') || []
 
     if (typeof cookies === 'string') cookies = [cookies]
@@ -134,8 +134,8 @@ export function destroyCookie(
 ) {
   const opts = { ...(options || {}), maxAge: -1 }
 
-  if (ctx && ctx.res) {
-    let cookies = ctx.res.getHeader('set-cookie') || []
+  if (ctx && ctx.res && ctx.res.setHeader && ctx.res.getHeader) {
+    let cookies = ctx.res.getHeader('Set-Cookie') || []
 
     if (typeof cookies === 'string') cookies = [cookies]
     if (typeof cookies === 'number') cookies = []
