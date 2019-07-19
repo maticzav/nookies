@@ -11,8 +11,7 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "compile": "tsc -d && yarn run minify",
-    "minify": "jsmin -o dist/index.min.js dist/index.js",
+    "compile": "ncc build src/index.ts -o dist -m",
     "pretest": "npm run clean && npm run compile",
     "test": "echo 'test'",
     "posttest": "npm run lint",
@@ -23,15 +22,13 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "cookie": "^0.4.0",
-    "jsmin": "^1.0.1",
-    "set-cookie-parser": "^2.2.1"
+    "cookie": "^0.4.0"
   },
   "devDependencies": {
     "@types/cookie": "0.3.3",
     "@types/next": "8.0.6",
     "@types/node": "10.14.13",
-    "@types/set-cookie-parser": "0.0.5",
+    "@zeit/ncc": "^0.20.4",
     "husky": "3.0.1",
     "prettier": "1.18.2",
     "prettier-check": "2.0.0",

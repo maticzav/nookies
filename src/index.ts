@@ -1,51 +1,13 @@
-import * as cookie from 'cookie'
+import {
+  parse,
+  CookieParseOptions,
+  serialize,
+  CookieSerializeOptions,
+} from 'cookie'
 import * as next from 'next'
-import * as setCookieParser from 'set-cookie-parser'
-import { Cookie } from 'set-cookie-parser'
-import { CookieSerializeOptions } from 'cookie'
 
 const isBrowser = () => typeof window !== 'undefined'
-
-/**
- * Compare the cookie and return true if the cookies has equivalent
- * options and the cookies would be overwritten in the browser storage.
- *
- * @param a first Cookie for comparision
- * @param b second Cookie for comparision
- */
-function areCookiesEqual(a: Cookie, b: Cookie & CookieSerializeOptions) {
-  return (
-    a.name === b.name &&
-    a.domain === b.domain &&
-    a.path === b.path &&
-    a.httpOnly === b.httpOnly &&
-    a.secure === b.secure
-  )
-}
-
-/**
- * Create an instance of the Cookie interface
- *
- * @param name name of the Cookie
- * @param value value of the Cookie
- * @param options Cookie options
- */
-function createCookie(
-  name: string,
-  value: string,
-  options: CookieSerializeOptions,
-): Cookie {
-  return {
-    name: name,
-    expires: options.expires,
-    maxAge: options.maxAge,
-    secure: options.secure,
-    httpOnly: options.httpOnly,
-    domain: options.domain,
-    value: value,
-    path: options.path,
-  }
-}
+const isNonEmptyString = (str: string) => str.trim() !== ''
 
 /**
  *
@@ -56,17 +18,154 @@ function createCookie(
  */
 export function parseCookies(
   ctx?: next.NextContext | null | undefined,
-  options?: cookie.CookieParseOptions,
-) {
+  options?: CookieParseOptions,
+): { [key: string]: string } {
+  /**
+   * Parses cookies from the request on the server side (Next.js)
+   */
   if (ctx && ctx.req && ctx.req.headers && ctx.req.headers.cookie) {
-    return cookie.parse(ctx.req.headers.cookie as string, options)
+    return parse(ctx.req.headers.cookie as string, options)
   }
 
+  /**
+   * Parses cookies from the document in the browser.
+   */
   if (isBrowser()) {
-    return cookie.parse(document.cookie, options)
+    return parse(document.cookie, options)
   }
 
   return {}
+}
+
+interface Cookie {
+  name: string
+  value: string
+  options: CookieSerializeOptions
+}
+
+/**
+ * Calculates the new headers which include the new cookie. While doing
+ * so it also checks for any duplicates.
+ *
+ * @param cookie
+ * @param headers
+ */
+function getSetCookieHeadersWithCookie(
+  cookie: Cookie,
+  headers: string | string[] | number | undefined,
+): string[] {
+  /**
+   * Manipulates Set-Cookie header to remove duplicates.
+   */
+
+  if (typeof headers === 'string') headers = [headers]
+  if (typeof headers === 'number') headers = []
+  if (typeof headers === 'undefined') headers = []
+
+  const existingCookies = parseSetCookieHeaders(headers)
+  const missingCookies: Cookie[] = existingCookies.reduce<Cookie[]>(
+    (acc, existingCookie) => {
+      if (areCookiesEqual(cookie, existingCookie)) {
+        return acc
+      } else {
+        return acc.concat(existingCookie)
+      }
+    },
+    [cookie],
+  )
+
+  /**
+   * Parse the new cookies into header.
+   */
+  const newSetCookieHeaders: string[] = missingCookies.map(cookie =>
+    serialize(cookie.name, cookie.value, cookie.options),
+  )
+
+  return newSetCookieHeaders
+
+  /* Helper functions. */
+
+  /**
+   * Parses a Set-Cookie header to prevent cookie duplication.
+   * (Inspired by `set-cookie-parser` parseString function).
+   *
+   * @param header
+   */
+  function parseSetCookieHeaders(headers: string[]): Cookie[] {
+    const cookies: Cookie[] = headers.map(header => {
+      /* Parses name and value parts. */
+      const [nameAndValue, ...parts] = header
+        .split(';')
+        .filter(isNonEmptyString)
+      const [name, ...rawValue] = nameAndValue.split('=')
+      const value = decodeURIComponent(rawValue.join('='))
+
+      /* Parses serialization options. */
+      const options = parts.reduce<CookieSerializeOptions>((acc, part) => {
+        const [rawKey, ...rawValue] = part.split('=')
+        const key = rawKey.trimLeft().toLowerCase()
+        const value = rawValue.join('=')
+
+        switch (key) {
+          case 'domain':
+            return { ...acc, domain: value }
+          case 'expires':
+            return { ...acc, expres: new Date(value) }
+          case 'httponly':
+            return { ...acc, httpOnly: true }
+          case 'max-age':
+            return { ...acc, maxAge: parseInt(value, 10) }
+          case 'path':
+            return { ...acc, path: value }
+          case 'samesite': {
+            const sameSite = value.toLowerCase()
+            switch (sameSite) {
+              case 'strict':
+                return { ...acc, sameSite: 'strict' }
+              case 'lax':
+                return { ...acc, sameSite: 'lax' }
+              case 'none':
+                return { ...acc, sameSite: 'none' }
+              default: {
+                throw new Error('Something extremly strange happened.')
+              }
+            }
+          }
+          case 'secure':
+            return { ...acc, secure: true }
+          default:
+            return { ...acc, [key]: value }
+        }
+      }, {})
+
+      const cookie: Cookie = {
+        name: name,
+        value: value,
+        options: options,
+      }
+
+      return cookie
+    })
+
+    return cookies
+  }
+
+  /**
+   * Determines whether two cookies should be treated as equal.
+   *
+   * @param a
+   * @param b
+   */
+  function areCookiesEqual(a: Cookie, b: Cookie): boolean {
+    return (
+      a.name === b.name &&
+      a.options.domain === b.options.domain &&
+      a.options.path === b.options.path &&
+      a.options.httpOnly === b.options.httpOnly &&
+      a.options.secure === b.options.secure &&
+      a.options.sameSite === b.options.sameSite
+    )
+  }
 }
 
 /**
@@ -82,41 +181,35 @@ export function setCookie(
   ctx: next.NextContext | null | undefined,
   name: string,
   value: string,
-  options: cookie.CookieSerializeOptions,
-) {
+  options: CookieSerializeOptions,
+): void {
+  const cookie: Cookie = {
+    name,
+    value,
+    options,
+  }
+
+  /**
+   * Calculates the new Set-Cookie headers and prevents duplication.
+   */
   if (ctx && ctx.res && ctx.res.getHeader && ctx.res.setHeader) {
-    let cookies = ctx.res.getHeader('Set-Cookie') || []
+    const setCookieHeaders = ctx.res.getHeader('Set-Cookie')
 
-    if (typeof cookies === 'string') cookies = [cookies]
-    if (typeof cookies === 'number') cookies = []
+    /* Adds the cookie to the list. */
+    const newSetCookieHeaders = getSetCookieHeadersWithCookie(
+      cookie,
+      setCookieHeaders,
+    )
 
-    const parsedCookies = setCookieParser.parse(cookies)
-
-    let cookiesToSet: string[] = []
-    parsedCookies.forEach((parsedCookie: Cookie) => {
-      if (!areCookiesEqual(parsedCookie, createCookie(name, value, options))) {
-        cookiesToSet.push(
-          cookie.serialize(parsedCookie.name, parsedCookie.value, {
-            domain: parsedCookie.domain,
-            path: parsedCookie.path,
-            httpOnly: parsedCookie.httpOnly,
-            secure: parsedCookie.secure,
-            maxAge: parsedCookie.maxAge,
-            expires: parsedCookie.expires,
-          }),
-        )
-      }
-    })
-
-    cookiesToSet.push(cookie.serialize(name, value, options))
-    ctx.res.setHeader('Set-Cookie', cookiesToSet)
+    ctx.res.setHeader('Set-Cookie', newSetCookieHeaders)
   }
 
+  /**
+   * Simply adds a cookie in the browser.
+   */
   if (isBrowser()) {
-    document.cookie = cookie.serialize(name, value, options)
+    document.cookie = serialize(cookie.name, cookie.value, cookie.options)
   }
-
-  return {}
 }
 
 /**
@@ -130,26 +223,36 @@ export function setCookie(
 export function destroyCookie(
   ctx: next.NextContext | null | undefined,
   name: string,
-  options?: cookie.CookieSerializeOptions,
-) {
-  const opts = { ...(options || {}), maxAge: -1 }
+  options?: CookieSerializeOptions,
+): void {
+  /* A delete cookie. */
+  const cookie: Cookie = {
+    name,
+    value: '',
+    options: { ...(options || {}), maxAge: -1 },
+  }
 
+  /**
+   * Deletes cookie on the server side and prevents duplication.
+   */
   if (ctx && ctx.res && ctx.res.setHeader && ctx.res.getHeader) {
-    let cookies = ctx.res.getHeader('Set-Cookie') || []
+    const setCookieHeaders = ctx.res.getHeader('Set-Cookie') || []
 
-    if (typeof cookies === 'string') cookies = [cookies]
-    if (typeof cookies === 'number') cookies = []
+    /* Adds delete cookie to the list. */
+    const newSetCookieHeaders = getSetCookieHeadersWithCookie(
+      cookie,
+      setCookieHeaders,
+    )
 
-    cookies.push(cookie.serialize(name, '', opts))
-
-    ctx.res.setHeader('Set-Cookie', cookies)
+    ctx.res.setHeader('Set-Cookie', newSetCookieHeaders)
   }
 
+  /**
+   * Adds the cookie using browser's `document.cookie`.
+   */
   if (isBrowser()) {
-    document.cookie = cookie.serialize(name, '', opts)
+    document.cookie = serialize(cookie.name, cookie.value, cookie.options)
   }
-
-  return {}
 }
 
 export default {

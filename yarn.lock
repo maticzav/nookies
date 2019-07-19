@@ -212,13 +212,6 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/set-cookie-parser@0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@types/set-cookie-parser/-/set-cookie-parser-0.0.5.tgz#eaf985fc18a2eae7590a02df8d413c3bc12897d9"
-  integrity sha512-oaxxqZcXweQNmGHuAoMdNcx56ljuKREINAHVvfAxRKAlOhfetP2zHr/QE1ewMOuFdTgPruvip45V3C+gCwUjTA==
-  dependencies:
-    "@types/node" "*"
-
 "@types/tapable@*":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-1.0.4.tgz#b4ffc7dc97b498c969b360a41eee247f82616370"
@@ -241,6 +234,11 @@
     "@types/tapable" "*"
     "@types/uglify-js" "*"
     source-map "^0.6.0"
+
+"@zeit/ncc@^0.20.4":
+  version "0.20.4"
+  resolved "https://registry.yarnpkg.com/@zeit/ncc/-/ncc-0.20.4.tgz#00f0a25a88cac3712af4ba66561d9e281c6f05c9"
+  integrity sha512-fmq+F/QxPec+k/zvT7HiVpk7oiGFseS6brfT/AYqmCUp6QFRK7vZf2Ref46MImsg/g2W3g5X6SRvGRmOAvEfdA==
 
 JSONStream@^1.0.4:
   version "1.3.3"
@@ -2531,11 +2529,6 @@ jsbn@~0.1.0:
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
   integrity sha1-peZUwuWi3rXyAdls77yoDA7y9RM=
 
-jsmin@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/jsmin/-/jsmin-1.0.1.tgz#e7bd0dcd6496c3bf4863235bf461a3d98aa3b98c"
-  integrity sha1-570NzWSWw79IYyNb9GGj2YqjuYw=
-
 json-parse-better-errors@^1.0.0, json-parse-better-errors@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/json-parse-better-errors/-/json-parse-better-errors-1.0.2.tgz#bb867cfb3450e69107c131d1c514bab3dc8bcaa9"
@@ -4523,11 +4516,6 @@ set-blocking@^2.0.0, set-blocking@~2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/set-blocking/-/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
   integrity sha1-BF+XgtARrppoA93TgrJDkrPYkPc=
-
-set-cookie-parser@^2.2.1:
-  version "2.3.5"
-  resolved "https://registry.yarnpkg.com/set-cookie-parser/-/set-cookie-parser-2.3.5.tgz#e2c16c93f063dee2486c5d48e26621ad75fd3bab"
-  integrity sha512-cN4GIBOE11PDqW1tXs4y9hQX68eOczUAQSrmB1ByNG3zH4hSOeBVtBe3lmEyjt8iy2F7JR17JLRwYLb1XncfuA==
 
 set-value@^0.4.3:
   version "0.4.3"
