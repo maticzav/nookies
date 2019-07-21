@@ -17,7 +17,7 @@ const isNonEmptyString = (str: string) => str.trim() !== ''
  * @param options
  */
 export function parseCookies(
-  ctx?: next.NextContext | null | undefined,
+  ctx?: next.NextPageContext | null | undefined,
   options?: CookieParseOptions,
 ): { [key: string]: string } {
   /**
@@ -178,15 +178,15 @@ function getSetCookieHeadersWithCookie(
  * @param options
  */
 export function setCookie(
-  ctx: next.NextContext | null | undefined,
+  ctx: next.NextPageContext | null | undefined,
   name: string,
   value: string,
-  options: CookieSerializeOptions,
+  options?: CookieSerializeOptions,
 ): void {
   const cookie: Cookie = {
     name,
     value,
-    options,
+    options: options || {},
   }
 
   /**
@@ -221,7 +221,7 @@ export function setCookie(
  * @param options
  */
 export function destroyCookie(
-  ctx: next.NextContext | null | undefined,
+  ctx: next.NextPageContext | null | undefined,
   name: string,
   options?: CookieSerializeOptions,
 ): void {

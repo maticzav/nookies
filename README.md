@@ -7,6 +7,7 @@ A collection of cookie helpers for Next.js
 - SSR support, for setter, parser and destroy
 - super light
 - perfect for authentication
+- supports setting multiple cookies at once and prevents duplication
 
 Setting and destroying cookies also works on server-side.
 

@@ -1,13 +1,39 @@
-version: 2
+version: 2.0
 jobs:
-  build:
+  test:
     docker:
-      - image: 'circleci/node:latest'
+      - image: 'circleci/node:11.3.0'
     steps:
       - checkout
       - run:
-          name: install
-          command: npm install
+          name: Install dependencies
+          command: yarn install
       - run:
-          name: release
-          command: npm run semantic-release || true
+          name: Test packages
+          command: yarn test
+      - run:
+          name: Collect coverage
+          command: yarn coverage
+  publish:
+    docker:
+      - image: 'circleci/node:11.3.0'
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies.
+          command: yarn install
+      - run:
+          name: Perform a release
+          command: yarn release
+
+workflows:
+  version: 2
+  test-and-publish:
+    jobs:
+      - test
+      - publish:
+          requires:
+            - test
+          filter:
+            branches:
+              only: master

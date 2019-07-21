@@ -9,7 +9,10 @@
     "sourceMap": true,
     "strict": true,
     "lib": ["dom", "es2017"],
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "jsx": "react",
+    "esModuleInterop": true
   },
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }
