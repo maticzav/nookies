@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/cookie": "0.3.3",
     "@types/next": "8.0.6",
-    "@types/node": "10.14.18",
+    "@types/node": "10.14.19",
     "@types/set-cookie-parser": "0.0.5",
     "husky": "3.0.5",
     "prettier": "1.18.2",
