@@ -35,7 +35,7 @@
     "husky": "3.0.9",
     "prettier": "1.18.2",
     "prettier-check": "2.0.0",
-    "pretty-quick": "1.11.1",
+    "pretty-quick": "2.0.1",
     "rimraf": "2.7.1",
     "semantic-release": "15.13.30",
     "ts-loader": "6.2.1",
