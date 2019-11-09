@@ -33,7 +33,7 @@
     "@types/node": "10.17.5",
     "@types/set-cookie-parser": "0.0.5",
     "husky": "3.0.9",
-    "prettier": "1.19.0",
+    "prettier": "1.19.1",
     "prettier-check": "2.0.0",
     "pretty-quick": "1.11.1",
     "rimraf": "2.7.1",
