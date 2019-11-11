@@ -39,7 +39,7 @@
     "rimraf": "2.7.1",
     "semantic-release": "15.13.30",
     "ts-loader": "6.2.1",
-    "ts-node": "8.4.1",
+    "ts-node": "8.5.0",
     "tslint": "5.20.1",
     "tslint-config-prettier": "1.18.0",
     "tslint-config-standard": "8.0.1",
