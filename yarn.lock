@@ -224,10 +224,10 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/set-cookie-parser@0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@types/set-cookie-parser/-/set-cookie-parser-0.0.5.tgz#eaf985fc18a2eae7590a02df8d413c3bc12897d9"
-  integrity sha512-oaxxqZcXweQNmGHuAoMdNcx56ljuKREINAHVvfAxRKAlOhfetP2zHr/QE1ewMOuFdTgPruvip45V3C+gCwUjTA==
+"@types/set-cookie-parser@0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@types/set-cookie-parser/-/set-cookie-parser-0.0.6.tgz#b0d8516c2571e0ce7c52854c342b1589736686e4"
+  integrity sha512-XIN/TID3Q1lO4Y3f09QO+pxOTg5tiLfsK5jhDZ10Bg0JBYcgRpP/drHeBM2xjixxrdkMt7kePcNgn07m+V2eXA==
   dependencies:
     "@types/node" "*"
 
