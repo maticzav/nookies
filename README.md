@@ -109,10 +109,13 @@ export default class Me extends React.Component {
   - **sameSite**
   - **secure**
 
-#### `destroyCookie(ctx, name)` or `cookies.destroy(ctx, 'token')`
+#### `destroyCookie(ctx, name, options)` or `cookies.destroy(ctx, 'token', options)`
 
 - **ctx:** (Next.js context)
 - **name:** cookie name
+- **options:**
+  - **domain**
+  - **path**
 
 ## License
 
