@@ -2,9 +2,27 @@ import * as cookie from 'cookie'
 import * as next from 'next'
 import * as setCookieParser from 'set-cookie-parser'
 import { Cookie } from 'set-cookie-parser'
-import { equals } from 'ramda'
 
 const isBrowser = () => typeof window !== 'undefined'
+
+function hasSameProperties(a: any, b: any) {
+  const aProps = Object.getOwnPropertyNames(a)
+  const bProps = Object.getOwnPropertyNames(b)
+
+  if (aProps.length !== bProps.length) {
+    return false
+  }
+
+  for (let i = 0; i < aProps.length; i++) {
+    const propName = aProps[i]
+
+    if (a[propName] !== b[propName]) {
+      return false
+    }
+  }
+
+  return true
+}
 
 /**
  * Compare the cookie and return true if the cookies has equivalent
@@ -19,8 +37,10 @@ function areCookiesEqual(a: Cookie, b: Cookie) {
     sameSiteSame = a.sameSite.toLowerCase() === b.sameSite.toLowerCase()
   }
   return (
-    equals({ ...a, sameSite: undefined }, { ...b, sameSite: undefined }) &&
-    sameSiteSame
+    hasSameProperties(
+      { ...a, sameSite: undefined },
+      { ...b, sameSite: undefined },
+    ) && sameSiteSame
   )
 }
 
