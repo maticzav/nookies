@@ -25,14 +25,12 @@
   "dependencies": {
     "cookie": "^0.4.0",
     "jsmin": "^1.0.1",
-    "ramda": "^0.26.1",
     "set-cookie-parser": "^2.2.1"
   },
   "devDependencies": {
     "@types/cookie": "0.3.3",
     "@types/next": "8.0.7",
-    "@types/node": "10.17.8",
-    "@types/ramda": "^0.26.38",
+    "@types/node": "10.17.9",
     "@types/set-cookie-parser": "0.0.6",
     "husky": "3.1.0",
     "prettier": "1.19.1",
