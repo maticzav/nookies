@@ -32,7 +32,7 @@
     "@types/next": "8.0.7",
     "@types/node": "10.17.15",
     "@types/set-cookie-parser": "0.0.6",
-    "husky": "3.1.0",
+    "husky": "4.2.3",
     "prettier": "1.19.1",
     "prettier-check": "2.0.0",
     "pretty-quick": "1.11.1",
