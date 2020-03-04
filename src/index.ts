@@ -2,9 +2,27 @@ import * as cookie from 'cookie'
 import * as next from 'next'
 import * as setCookieParser from 'set-cookie-parser'
 import { Cookie } from 'set-cookie-parser'
-import { CookieSerializeOptions } from 'cookie'
 
 const isBrowser = () => typeof window !== 'undefined'
+
+function hasSameProperties(a: any, b: any) {
+  const aProps = Object.getOwnPropertyNames(a)
+  const bProps = Object.getOwnPropertyNames(b)
+
+  if (aProps.length !== bProps.length) {
+    return false
+  }
+
+  for (let i = 0; i < aProps.length; i++) {
+    const propName = aProps[i]
+
+    if (a[propName] !== b[propName]) {
+      return false
+    }
+  }
+
+  return true
+}
 
 /**
  * Compare the cookie and return true if the cookies has equivalent
@@ -13,13 +31,16 @@ const isBrowser = () => typeof window !== 'undefined'
  * @param a first Cookie for comparision
  * @param b second Cookie for comparision
  */
-function areCookiesEqual(a: Cookie, b: Cookie & CookieSerializeOptions) {
+function areCookiesEqual(a: Cookie, b: Cookie) {
+  let sameSiteSame = a.sameSite === b.sameSite
+  if (typeof a.sameSite === 'string' && typeof b.sameSite === 'string') {
+    sameSiteSame = a.sameSite.toLowerCase() === b.sameSite.toLowerCase()
+  }
   return (
-    a.name === b.name &&
-    a.domain === b.domain &&
-    a.path === b.path &&
-    a.httpOnly === b.httpOnly &&
-    a.secure === b.secure
+    hasSameProperties(
+      { ...a, sameSite: undefined },
+      { ...b, sameSite: undefined },
+    ) && sameSiteSame
   )
 }
 
@@ -33,17 +54,21 @@ function areCookiesEqual(a: Cookie, b: Cookie & CookieSerializeOptions) {
 function createCookie(
   name: string,
   value: string,
-  options: CookieSerializeOptions,
+  options: cookie.CookieSerializeOptions,
 ): Cookie {
+  let sameSite = options.sameSite
+  if (sameSite === true) {
+    sameSite = 'strict'
+  }
+  if (sameSite === undefined || sameSite === false) {
+    sameSite = 'lax'
+  }
+  const cookieToSet = { ...options, sameSite: sameSite }
+  delete cookieToSet.encode
   return {
     name: name,
-    expires: options.expires,
-    maxAge: options.maxAge,
-    secure: options.secure,
-    httpOnly: options.httpOnly,
-    domain: options.domain,
     value: value,
-    path: options.path,
+    ...cookieToSet,
   }
 }
 
@@ -97,12 +122,7 @@ export function setCookie(
       if (!areCookiesEqual(parsedCookie, createCookie(name, value, options))) {
         cookiesToSet.push(
           cookie.serialize(parsedCookie.name, parsedCookie.value, {
-            domain: parsedCookie.domain,
-            path: parsedCookie.path,
-            httpOnly: parsedCookie.httpOnly,
-            secure: parsedCookie.secure,
-            maxAge: parsedCookie.maxAge,
-            expires: parsedCookie.expires,
+            ...(parsedCookie as cookie.CookieSerializeOptions),
           }),
         )
       }
