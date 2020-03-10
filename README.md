@@ -74,8 +74,16 @@ import { parseCookies } from 'nookies'
 export default class Me extends React.Component {
   handleClick = () => {
     // Simply omit context parameter.
+    // Parse
     const cookies = parseCookies()
     console.log({ cookies })
+    // Set
+    setCookie(null, 'token', token, {
+      maxAge: 30 * 24 * 60 * 60,
+      path: '/',
+    })
+    // Destroy
+    destroyCookie(null, 'token')
   }
 
   render() {

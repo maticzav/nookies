@@ -25,24 +25,24 @@
   "dependencies": {
     "cookie": "^0.4.0",
     "jsmin": "^1.0.1",
-    "set-cookie-parser": "^2.2.1"
+    "set-cookie-parser": "^2.4.3"
   },
   "devDependencies": {
     "@types/cookie": "0.3.3",
-    "@types/next": "8.0.7",
-    "@types/node": "10.17.17",
+    "@types/next": "9.0.0",
+    "@types/node": "13.9.0",
     "@types/set-cookie-parser": "0.0.6",
-    "husky": "3.1.0",
+    "husky": "4.2.3",
     "prettier": "1.19.1",
     "prettier-check": "2.0.0",
-    "pretty-quick": "1.11.1",
-    "rimraf": "2.7.1",
-    "semantic-release": "15.14.0",
+    "pretty-quick": "2.0.1",
+    "rimraf": "3.0.2",
+    "semantic-release": "17.0.4",
     "ts-loader": "6.2.1",
     "ts-node": "8.6.2",
-    "tslint": "5.20.1",
+    "tslint": "6.0.0",
     "tslint-config-prettier": "1.18.0",
-    "tslint-config-standard": "8.0.1",
+    "tslint-config-standard": "9.0.0",
     "typescript": "3.8.3"
   },
   "keywords": [
