@@ -40,7 +40,7 @@
     "semantic-release": "17.0.4",
     "ts-loader": "6.2.1",
     "ts-node": "8.6.2",
-    "tslint": "6.0.0",
+    "tslint": "6.1.0",
     "tslint-config-prettier": "1.18.0",
     "tslint-config-standard": "9.0.0",
     "typescript": "3.8.3"
