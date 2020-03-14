@@ -69,7 +69,7 @@ export default class Me extends React.Component {
 ### Cookies on the client
 
 ```js
-import { parseCookies } from 'nookies'
+import { parseCookies, setCookie, destroyCookie } from 'nookies'
 
 export default class Me extends React.Component {
   handleClick = () => {
