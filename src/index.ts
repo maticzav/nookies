@@ -80,7 +80,7 @@ function createCookie(
  * @param options
  */
 export function parseCookies(
-  ctx?: next.NextPageContext | null | undefined,
+  ctx?: Pick<next.NextPageContext, 'req'> | null | undefined,
   options?: cookie.CookieParseOptions,
 ) {
   if (ctx && ctx.req && ctx.req.headers && ctx.req.headers.cookie) {
@@ -104,7 +104,7 @@ export function parseCookies(
  * @param options
  */
 export function setCookie(
-  ctx: next.NextPageContext | null | undefined,
+  ctx: Pick<next.NextPageContext, 'res'> | null | undefined,
   name: string,
   value: string,
   options: cookie.CookieSerializeOptions,
