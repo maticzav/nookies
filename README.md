@@ -87,7 +87,7 @@ Me.getInitialProps = async function(ctx) {
 ## Client-only Cookies
 
 ```js
-import { parseCookies } from 'nookies'
+import { parseCookies, setCookie, destroyCookie } from 'nookies'
 
 function handleClick() {
   // Simply omit context parameter.
