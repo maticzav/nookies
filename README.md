@@ -14,30 +14,48 @@ Setting and destroying cookies also works on server-side.
 
 `npm install --save nookies`
 
-### SSR cookies
+## Demo
+
+Try a demo of the example code below here:
+
+### [Demo on CodeSandbox](https://codesandbox.io/s/charming-herschel-7z362)
+
+## `getInitialProps` cookies (SSR + Client)
 
 ```js
 import { parseCookies, setCookie, destroyCookie } from 'nookies'
 
-export default class Me extends React.Component {
-  static async getInitialProps(ctx) {
-    // Parse
-    parseCookies(ctx)
-
-    // Set
-    setCookie(ctx, 'token', token, {
-      maxAge: 30 * 24 * 60 * 60,
-      path: '/',
-    })
-
-    // Destroy
-    destroyCookie(ctx, 'token')
-  }
-
-  render() {
-    return <div>My profile</div>
-  }
+export default function Me({ cookies }) {
+  return (
+    <div>
+      My profile. Cookies:
+      <ul>
+        {cookies &&
+          Object.entries(cookies).map(([name, value]) => (
+            <li>
+              {name}: {value}
+            </li>
+          ))}
+      </ul>
+    </div>
+  )
 }
+
+Me.getInitialProps = async function(ctx) {
+  // Parse
+  parseCookies(ctx)
+
+  // Set
+  setCookie(ctx, 'fromGetInitialProps', 'value', {
+    maxAge: 30 * 24 * 60 * 60,
+    path: '/',
+  })
+
+  // Destroy
+  // destroyCookie(ctx, 'cookieName')
+
+  return { cookies };
+};
 ```
 
 OR
@@ -45,64 +63,64 @@ OR
 ```js
 import nookies from 'nookies'
 
-export default class Me extends React.Component {
-  static async getInitialProps(ctx) {
-    // Parse
-    nookies.get(ctx)
+export default function Me () {
+  return <div>My profile</div>
+}
 
-    // Set
-    nookies.set(ctx, 'token', token, {
-      maxAge: 30 * 24 * 60 * 60,
-      path: '/',
-    })
+Me.getInitialProps = async function(ctx) {
+  // Parse
+  nookies.get(ctx)
 
-    // Destroy
-    nookies.destroy(ctx, 'token')
-  }
+  // Set
+  nookies.set(ctx, 'fromGetInitialProps', 'value', {
+    maxAge: 30 * 24 * 60 * 60,
+    path: '/',
+  })
 
-  render() {
-    return <div>My profile</div>
-  }
+  // Destroy
+  // nookies.destroy(ctx, 'cookieName')
+
+  return { cookies };
 }
 ```
 
-### Cookies on the client
+## Client-only Cookies
 
 ```js
 import { parseCookies } from 'nookies'
 
-export default class Me extends React.Component {
-  handleClick = () => {
-    // Simply omit context parameter.
-    // Parse
-    const cookies = parseCookies()
-    console.log({ cookies })
-    // Set
-    setCookie(null, 'token', token, {
-      maxAge: 30 * 24 * 60 * 60,
-      path: '/',
-    })
-    // Destroy
-    destroyCookie(null, 'token')
-  }
+function handleClick() {
+  // Simply omit context parameter.
+  // Parse
+  const cookies = parseCookies()
+  console.log({ cookies })
 
-  render() {
-    return <button onClick={this.handleClick}>Click Me!</button>
-  }
+  // Set
+  setCookie(null, 'fromClient', 'value', {
+    maxAge: 30 * 24 * 60 * 60,
+    path: '/',
+  })
+
+  // Destroy
+  // destroyCookie(null, 'cookieName')
+}
+
+export default function Me () {
+  return <button onClick={handleClick}>Set Cookie</button>
 }
 ```
 
-### Reference
+## Reference
 
 > For client side usage, omit the `ctx` parameter. You can do so by setting it to an empty object (`{}`).
 
-#### `parseCookies(ctx, options)` or `cookies.get(ctx, options)`
+### `parseCookies(ctx, options)` or `cookies.get(ctx, options)`
 
 - **ctx:** `Next.js context`
 - **options:**
   - **decode:** `a custom resolver function (default: decodeURIComponent)`
 
-#### `setCookie(ctx, name, value, options)` or `cookies.set(ctx, name, value, options)`
+### `setCookie(ctx, name, value, options)` or `cookies.set(ctx, name, value, options)`
 
 - **ctx:** `(Next.js context)`
 - **name:** cookie name
@@ -117,7 +135,7 @@ export default class Me extends React.Component {
   - **sameSite**
   - **secure**
 
-#### `destroyCookie(ctx, name, options)` or `cookies.destroy(ctx, 'token', options)`
+### `destroyCookie(ctx, name, options)` or `cookies.destroy(ctx, 'token', options)`
 
 - **ctx:** (Next.js context)
 - **name:** cookie name
