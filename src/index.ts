@@ -133,7 +133,7 @@ export function setCookie(
   }
 
   if (isBrowser()) {
-    if (options.httpOnly) {
+    if (options && options.httpOnly) {
       throw new Error("Can not set a httpOnly cookie in the browser.")
     }
     
