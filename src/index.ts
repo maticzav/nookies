@@ -134,9 +134,9 @@ export function setCookie(
 
   if (isBrowser()) {
     if (options && options.httpOnly) {
-      throw new Error("Can not set a httpOnly cookie in the browser.")
+      throw new Error('Can not set a httpOnly cookie in the browser.')
     }
-    
+
     document.cookie = cookie.serialize(name, value, options)
   }
 
