@@ -80,7 +80,11 @@ function createCookie(
  * @param options
  */
 export function parseCookies(
-  ctx?: Pick<next.NextPageContext, 'req'> | null | undefined,
+  ctx?:
+    | Pick<next.NextPageContext, 'req'>
+    | { req: next.NextApiRequest }
+    | null
+    | undefined,
   options?: cookie.CookieParseOptions,
 ) {
   if (ctx && ctx.req && ctx.req.headers && ctx.req.headers.cookie) {
@@ -104,7 +108,11 @@ export function parseCookies(
  * @param options
  */
 export function setCookie(
-  ctx: Pick<next.NextPageContext, 'res'> | null | undefined,
+  ctx:
+    | Pick<next.NextPageContext, 'res'>
+    | { res: next.NextApiResponse }
+    | null
+    | undefined,
   name: string,
   value: string,
   options: cookie.CookieSerializeOptions,
@@ -134,9 +142,9 @@ export function setCookie(
 
   if (isBrowser()) {
     if (options && options.httpOnly) {
-      throw new Error("Can not set a httpOnly cookie in the browser.")
+      throw new Error('Can not set a httpOnly cookie in the browser.')
     }
-    
+
     document.cookie = cookie.serialize(name, value, options)
   }
 
@@ -152,7 +160,11 @@ export function setCookie(
  * @param options
  */
 export function destroyCookie(
-  ctx: next.NextPageContext | null | undefined,
+  ctx:
+    | Pick<next.NextPageContext, 'res'>
+    | { res: next.NextApiResponse }
+    | null
+    | undefined,
   name: string,
   options?: cookie.CookieSerializeOptions,
 ) {
