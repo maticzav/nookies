@@ -12,7 +12,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "compile": "tsc -d && yarn run minify",
-    "minify": "jsmin -o dist/index.min.js dist/index.js",
+    "minify": "terser -c -m --source-map \"content='./dist/index.js.map',url='index.min.js.map'\" -o dist/index.min.js -- dist/index.js",
     "pretest": "npm run clean && npm run compile",
     "test": "echo 'test'",
     "posttest": "npm run lint",
@@ -24,7 +24,6 @@
   },
   "dependencies": {
     "cookie": "^0.4.0",
-    "jsmin": "^1.0.1",
     "set-cookie-parser": "^2.4.3"
   },
   "devDependencies": {
@@ -38,6 +37,7 @@
     "pretty-quick": "2.0.1",
     "rimraf": "3.0.2",
     "semantic-release": "17.0.7",
+    "terser": "^4.6.12",
     "ts-loader": "6.2.2",
     "ts-node": "8.9.1",
     "tslint": "6.1.2",
