@@ -39,7 +39,7 @@
     "semantic-release": "17.0.7",
     "terser": "4.6.13",
     "ts-loader": "6.2.2",
-    "ts-node": "8.10.0",
+    "ts-node": "8.10.1",
     "tslint": "6.1.2",
     "tslint-config-prettier": "1.18.0",
     "tslint-config-standard": "9.0.0",
