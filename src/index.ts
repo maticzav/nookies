@@ -137,7 +137,7 @@ export function setCookie(
     })
 
     cookiesToSet.push(cookie.serialize(name, value, options))
-    if (!res.finished) {
+    if (!ctx.res.finished) {
       ctx.res.setHeader('Set-Cookie', cookiesToSet)
     }
   }
