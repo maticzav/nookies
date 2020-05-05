@@ -137,7 +137,9 @@ export function setCookie(
     })
 
     cookiesToSet.push(cookie.serialize(name, value, options))
-    ctx.res.setHeader('Set-Cookie', cookiesToSet)
+    if (!res.finished) {
+      ctx.res.setHeader('Set-Cookie', cookiesToSet)
+    }
   }
 
   if (isBrowser()) {
