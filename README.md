@@ -41,7 +41,7 @@ export default function Me({ cookies }) {
   )
 }
 
-Me.getInitialProps = async function(ctx) {
+Me.getInitialProps = async function({ ctx }) {
   // Parse
   parseCookies(ctx)
 
@@ -67,7 +67,7 @@ export default function Me () {
   return <div>My profile</div>
 }
 
-Me.getInitialProps = async function(ctx) {
+Me.getInitialProps = async function({ ctx }) {
   // Parse
   nookies.get(ctx)
 
