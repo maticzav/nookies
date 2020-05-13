@@ -27,7 +27,7 @@
     "set-cookie-parser": "^2.4.3"
   },
   "devDependencies": {
-    "@types/cookie": "0.3.3",
+    "@types/cookie": "0.4.0",
     "@types/next": "9.0.0",
     "@types/node": "13.13.6",
     "@types/set-cookie-parser": "0.0.6",
