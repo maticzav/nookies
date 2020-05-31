@@ -10,6 +10,12 @@ A collection of cookie helpers for Next.js
 
 Setting and destroying cookies also works on server-side.
 
+<!-- BANNER START -->
+
+[![Sponsored By LabelSync](https://label-sync.com/img/ads/github.png)](https://label-sync.com)
+
+<!-- BANNER END -->
+
 ## Quick start
 
 `npm install --save nookies`
