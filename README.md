@@ -26,7 +26,7 @@ Try a demo of the example code below here:
 
 ### [Demo on CodeSandbox](https://codesandbox.io/s/charming-herschel-7z362)
 
-## `getInitialProps` cookies (SSR + Client)
+## `getServerSideProps` cookies (SSR + Client)
 
 ```js
 import { parseCookies, setCookie, destroyCookie } from 'nookies'
@@ -47,12 +47,12 @@ export default function Me({ cookies }) {
   )
 }
 
-Me.getInitialProps = async function({ ctx }) {
+export async function getServerSideProps({ ctx }) {
   // Parse
   parseCookies(ctx)
 
   // Set
-  setCookie(ctx, 'fromGetInitialProps', 'value', {
+  setCookie(ctx, 'fromGetServerSideProps', 'value', {
     maxAge: 30 * 24 * 60 * 60,
     path: '/',
   })
@@ -73,7 +73,7 @@ export default function Me () {
   return <div>My profile</div>
 }
 
-Me.getInitialProps = async function({ ctx }) {
+export async function getServerSideProps({ ctx }) {
   // Parse
   nookies.get(ctx)
 
