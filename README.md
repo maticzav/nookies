@@ -49,7 +49,7 @@ export default function Me({ cookies }) {
 
 export async function getServerSideProps({ ctx }) {
   // Parse
-  parseCookies(ctx)
+  const cookies = parseCookies(ctx)
 
   // Set
   setCookie(ctx, 'fromGetServerSideProps', 'value', {
@@ -60,8 +60,8 @@ export async function getServerSideProps({ ctx }) {
   // Destroy
   // destroyCookie(ctx, 'cookieName')
 
-  return { cookies };
-};
+  return { cookies }
+}
 ```
 
 OR
@@ -69,13 +69,13 @@ OR
 ```js
 import nookies from 'nookies'
 
-export default function Me () {
+export default function Me() {
   return <div>My profile</div>
 }
 
 export async function getServerSideProps({ ctx }) {
   // Parse
-  nookies.get(ctx)
+  const cookies = nookies.get(ctx)
 
   // Set
   nookies.set(ctx, 'fromGetInitialProps', 'value', {
@@ -86,7 +86,7 @@ export async function getServerSideProps({ ctx }) {
   // Destroy
   // nookies.destroy(ctx, 'cookieName')
 
-  return { cookies };
+  return { cookies }
 }
 ```
 
@@ -111,7 +111,7 @@ function handleClick() {
   // destroyCookie(null, 'cookieName')
 }
 
-export default function Me () {
+export default function Me() {
   return <button onClick={handleClick}>Set Cookie</button>
 }
 ```
