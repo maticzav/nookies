@@ -2,6 +2,7 @@ import * as cookie from 'cookie'
 import * as next from 'next'
 import * as setCookieParser from 'set-cookie-parser'
 import { Cookie } from 'set-cookie-parser'
+import * as express from 'express'
 
 const isBrowser = () => typeof window !== 'undefined'
 
@@ -83,6 +84,7 @@ export function parseCookies(
   ctx?:
     | Pick<next.NextPageContext, 'req'>
     | { req: next.NextApiRequest }
+    | { req: express.Request }
     | null
     | undefined,
   options?: cookie.CookieParseOptions,
