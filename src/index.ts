@@ -29,8 +29,8 @@ function hasSameProperties(a: any, b: any) {
  * Compare the cookie and return true if the cookies has equivalent
  * options and the cookies would be overwritten in the browser storage.
  *
- * @param a first Cookie for comparision
- * @param b second Cookie for comparision
+ * @param a first Cookie for comparison
+ * @param b second Cookie for comparison
  */
 function areCookiesEqual(a: Cookie, b: Cookie) {
   let sameSiteSame = a.sameSite === b.sameSite
