@@ -5,6 +5,7 @@
 A collection of cookie helpers for Next.js
 
 - SSR support, for setter, parser and destroy
+- Custom Express server support
 - super light
 - perfect for authentication
 
@@ -116,19 +117,51 @@ export default function Me() {
 }
 ```
 
+## Custom Express server cookies
+
+```js
+const express = require('express');
+const dev = process.env.NODE_ENV !== 'production';
+const app = next({ dev });
+const handle = app.getRequestHandler();
+const { parseCookies, setCookie, destroyCookie } = require('nookies');
+
+app.prepare()
+    .then(() => {
+        const server = express();
+
+        server.get('/page', (req, res) => {
+
+          // Notice how the request object is passed
+          const parsedCookies = parseCookies({ req });
+
+          // Notice how the response object is passed
+          setCookie({ res }, 'fromServer', 'value', {
+            maxAge: 30 * 24 * 60 * 60,
+            path: '/page',
+          });
+
+          // destroyCookie({ res }, 'fromServer');
+
+          return handle(req, res);
+        });
+
+    );
+```
+
 ## Reference
 
 > For client side usage, omit the `ctx` parameter. You can do so by setting it to an empty object (`{}`).
 
 ### `parseCookies(ctx, options)` or `cookies.get(ctx, options)`
 
-- **ctx:** `Next.js context`
+- **ctx:** `Next.js context` || `(Express request object)`
 - **options:**
   - **decode:** `a custom resolver function (default: decodeURIComponent)`
 
 ### `setCookie(ctx, name, value, options)` or `cookies.set(ctx, name, value, options)`
 
-- **ctx:** `(Next.js context)`
+- **ctx:** `(Next.js context)` || `(Express request object)`
 - **name:** cookie name
 - **value:** cookie value
 - **options:**
@@ -143,7 +176,7 @@ export default function Me() {
 
 ### `destroyCookie(ctx, name, options)` or `cookies.destroy(ctx, 'token', options)`
 
-- **ctx:** (Next.js context)
+- **ctx:** `(Next.js context)` || `(Express response object)`
 - **name:** cookie name
 - **options:**
   - **domain**

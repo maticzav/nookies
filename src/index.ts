@@ -2,6 +2,7 @@ import * as cookie from 'cookie'
 import * as next from 'next'
 import * as setCookieParser from 'set-cookie-parser'
 import { Cookie } from 'set-cookie-parser'
+import * as express from 'express'
 
 const isBrowser = () => typeof window !== 'undefined'
 
@@ -28,8 +29,8 @@ function hasSameProperties(a: any, b: any) {
  * Compare the cookie and return true if the cookies has equivalent
  * options and the cookies would be overwritten in the browser storage.
  *
- * @param a first Cookie for comparision
- * @param b second Cookie for comparision
+ * @param a first Cookie for comparison
+ * @param b second Cookie for comparison
  */
 function areCookiesEqual(a: Cookie, b: Cookie) {
   let sameSiteSame = a.sameSite === b.sameSite
@@ -83,6 +84,7 @@ export function parseCookies(
   ctx?:
     | Pick<next.NextPageContext, 'req'>
     | { req: next.NextApiRequest }
+    | { req: express.Request }
     | null
     | undefined,
   options?: cookie.CookieParseOptions,
@@ -111,6 +113,7 @@ export function setCookie(
   ctx:
     | Pick<next.NextPageContext, 'res'>
     | { res: next.NextApiResponse }
+    | { res: express.Response }
     | null
     | undefined,
   name: string,
@@ -165,6 +168,7 @@ export function destroyCookie(
   ctx:
     | Pick<next.NextPageContext, 'res'>
     | { res: next.NextApiResponse }
+    | { res: express.Response }
     | null
     | undefined,
   name: string,
