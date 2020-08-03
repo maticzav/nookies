@@ -168,6 +168,7 @@ export function destroyCookie(
   ctx:
     | Pick<next.NextPageContext, 'res'>
     | { res: next.NextApiResponse }
+    | { res: express.Response }
     | null
     | undefined,
   name: string,
