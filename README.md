@@ -48,7 +48,7 @@ export default function Me({ cookies }) {
   )
 }
 
-export async function getServerSideProps({ ctx }) {
+export async function getServerSideProps(ctx) {
   // Parse
   const cookies = parseCookies(ctx)
 
@@ -74,7 +74,7 @@ export default function Me() {
   return <div>My profile</div>
 }
 
-export async function getServerSideProps({ ctx }) {
+export async function getServerSideProps(ctx) {
   // Parse
   const cookies = nookies.get(ctx)
 
