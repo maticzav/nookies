@@ -9000,10 +9000,10 @@ terser@4.6.13:
     source-map "~0.6.1"
     source-map-support "~0.5.12"
 
-terser@5.3.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-5.3.0.tgz#c481f4afecdcc182d5e2bdd2ff2dc61555161e81"
-  integrity sha512-XTT3D3AwxC54KywJijmY2mxZ8nJiEjBHVYzq8l9OaYuRFWeQNBwvipuzzYEP4e+/AVcd1hqG/CqgsdIRyT45Fg==
+terser@5.3.1:
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-5.3.1.tgz#f50fe20ab48b15234fe9bdd86b10148ad5fca787"
+  integrity sha512-yD80f4hdwCWTH5mojzxe1q8bN1oJbsK/vfJGLcPZM/fl+/jItIVNKhFIHqqR71OipFWMLgj3Kc+GIp6CeIqfnA==
   dependencies:
     commander "^2.20.0"
     source-map "~0.6.1"
