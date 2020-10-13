@@ -133,6 +133,7 @@ export function setCookie(
       if (!areCookiesEqual(parsedCookie, createCookie(name, value, options))) {
         cookiesToSet.push(
           cookie.serialize(parsedCookie.name, parsedCookie.value, {
+            encode: (val: string) => val,
             ...(parsedCookie as cookie.CookieSerializeOptions),
           }),
         )
