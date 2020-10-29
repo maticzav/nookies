@@ -1274,10 +1274,10 @@
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
 
-"@types/set-cookie-parser@0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@types/set-cookie-parser/-/set-cookie-parser-0.0.7.tgz#198b99443c46a4ac9445eadbae211827c82b335d"
-  integrity sha512-FRDB9Cuuoq1+kZS/rnLZbxmKzC3xQHOJvlB1j3MUyPVVJA35OZr/pNPPHtbtK8wnJr0SUfZCkssju0eCUIy4YQ==
+"@types/set-cookie-parser@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@types/set-cookie-parser/-/set-cookie-parser-2.4.0.tgz#10cc0446bad372827671a5195fbd14ebce4a9baf"
+  integrity sha512-w7BFUq81sy7H/0jN0K5cax8MwRN6NOSURpY4YuO4+mOgoicxCZ33BUYz+gyF/sUf7uDl2We2yGJfppxzEXoAXQ==
   dependencies:
     "@types/node" "*"
 

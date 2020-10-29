@@ -31,7 +31,7 @@
     "@types/express": "4.17.8",
     "@types/next": "9.0.0",
     "@types/node": "13.13.30",
-    "@types/set-cookie-parser": "0.0.7",
+    "@types/set-cookie-parser": "2.4.0",
     "husky": "4.3.0",
     "prettier": "1.19.1",
     "prettier-check": "2.0.0",
