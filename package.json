@@ -23,19 +23,19 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "cookie": "^0.4.0",
-    "set-cookie-parser": "^2.4.3"
+    "cookie": "^0.4.1",
+    "set-cookie-parser": "^2.4.6"
   },
   "devDependencies": {
     "@types/cookie": "0.4.0",
     "@types/express": "4.17.8",
     "@types/next": "9.0.0",
-    "@types/node": "13.13.30",
-    "@types/set-cookie-parser": "0.0.7",
+    "@types/node": "14.14.6",
+    "@types/set-cookie-parser": "2.4.0",
     "husky": "4.3.0",
-    "prettier": "1.19.1",
+    "prettier": "2.1.2",
     "prettier-check": "2.0.0",
-    "pretty-quick": "2.0.2",
+    "pretty-quick": "3.1.0",
     "rimraf": "3.0.2",
     "semantic-release": "17.2.2",
     "terser": "5.3.8",
