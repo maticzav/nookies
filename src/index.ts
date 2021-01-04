@@ -89,7 +89,7 @@ export function parseCookies(
     | undefined,
   options?: cookie.CookieParseOptions,
 ) {
-  if (ctx && ctx.req && ctx.req.headers && ctx.req.headers.cookie) {
+  if (ctx?.req?.headers?.cookie) {
     return cookie.parse(ctx.req.headers.cookie as string, options)
   }
 
@@ -120,7 +120,7 @@ export function setCookie(
   value: string,
   options: cookie.CookieSerializeOptions,
 ) {
-  if (ctx && ctx.res && ctx.res.getHeader && ctx.res.setHeader) {
+  if (ctx?.res?.getHeader && ctx.res.setHeader) {
     let cookies = ctx.res.getHeader('Set-Cookie') || []
 
     if (typeof cookies === 'string') cookies = [cookies]
@@ -177,7 +177,7 @@ export function destroyCookie(
 ) {
   const opts = { ...(options || {}), maxAge: -1 }
 
-  if (ctx && ctx.res && ctx.res.setHeader && ctx.res.getHeader) {
+  if (ctx?.res?.setHeader && ctx.res.getHeader) {
     let cookies = ctx.res.getHeader('Set-Cookie') || []
 
     if (typeof cookies === 'string') cookies = [cookies]
