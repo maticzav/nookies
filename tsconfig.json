@@ -2,13 +2,13 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
+    "lib": ["dom", "es2017"],
+
     "moduleResolution": "node",
+
     "noUnusedLocals": true,
-    "rootDir": "src",
-    "outDir": "dist",
     "sourceMap": true,
     "strict": true,
-    "lib": ["dom", "es2017"],
     "skipLibCheck": true
   },
   "exclude": ["node_modules", "dist"]

@@ -1,71 +1,25 @@
-# nookies :cookie: :cookie: :cookie:
+# nookies :cookie:
 
-[![CircleCI](https://circleci.com/gh/maticzav/nookies/tree/master.svg?style=shield)](https://circleci.com/gh/maticzav/nookies/tree/master) [![npm version](https://badge.fury.io/js/nookies.svg)](https://badge.fury.io/js/nookies)
+[![npm version](https://badge.fury.io/js/nookies.svg)](https://badge.fury.io/js/nookies)
 
-A collection of cookie helpers for Next.js
+> A collection of cookie helpers for Next.js
 
-- SSR support, for setter, parser and destroy
-- Custom Express server support
-- super light
-- perfect for authentication
+## Features
+
+- ✨ SSR support, for setter, parser and destroy
+- ⚙️ Custom Express server support
+- 🪶 super light
+- 🛡 perfect for authentication
 
 Setting and destroying cookies also works on server-side.
 
-<!-- BANNER START -->
-
-[![Sponsored By LabelSync](https://label-sync.com/img/ads/github.png)](https://label-sync.com)
-
-<!-- BANNER END -->
-
 ## Quick start
 
-`npm install --save nookies`
+`yarn add nookies`
 
-## Demo
+> You can play with the example code [here](https://codesandbox.io/s/charming-herschel-7z362).
 
-Try a demo of the example code below here:
-
-### [Demo on CodeSandbox](https://codesandbox.io/s/charming-herschel-7z362)
-
-## `getServerSideProps` cookies (SSR + Client)
-
-```js
-import { parseCookies, setCookie, destroyCookie } from 'nookies'
-
-export default function Me({ cookies }) {
-  return (
-    <div>
-      My profile. Cookies:
-      <ul>
-        {cookies &&
-          Object.entries(cookies).map(([name, value]) => (
-            <li>
-              {name}: {value}
-            </li>
-          ))}
-      </ul>
-    </div>
-  )
-}
-
-export async function getServerSideProps(ctx) {
-  // Parse
-  const cookies = parseCookies(ctx)
-
-  // Set
-  setCookie(ctx, 'fromGetServerSideProps', 'value', {
-    maxAge: 30 * 24 * 60 * 60,
-    path: '/',
-  })
-
-  // Destroy
-  // destroyCookie(ctx, 'cookieName')
-
-  return { cookies }
-}
-```
-
-OR
+### ServerSide cookies
 
 ```js
 import nookies from 'nookies'
@@ -151,15 +105,17 @@ app.prepare()
 
 ## Reference
 
-> For client side usage, omit the `ctx` parameter. You can do so by setting it to an empty object (`{}`).
+> For client side usage, omit the `ctx` parameter. You can do so by setting it to an empty object (`{}`), `null` or `undefined`.
 
-### `parseCookies(ctx, options)` or `cookies.get(ctx, options)`
+### `parseCookies(ctx, options)` or `nookies.get(ctx, options)`
 
 - **ctx:** `Next.js context` || `(Express request object)`
 - **options:**
   - **decode:** `a custom resolver function (default: decodeURIComponent)`
 
-### `setCookie(ctx, name, value, options)` or `cookies.set(ctx, name, value, options)`
+### `setCookie(ctx, name, value, options)` or `nookies.set(ctx, name, value, options)`
+
+> Don't forget to end your response on the server with `res.send()`.
 
 - **ctx:** `(Next.js context)` || `(Express request object)`
 - **name:** cookie name
@@ -174,7 +130,9 @@ app.prepare()
   - **sameSite**
   - **secure**
 
-### `destroyCookie(ctx, name, options)` or `cookies.destroy(ctx, 'token', options)`
+### `destroyCookie(ctx, name, options)` or `nookies.destroy(ctx, 'token', options)`
+
+> Don't forget to end your response on the server with `res.send()`. This might be the reason your cookie isn't removed.
 
 - **ctx:** `(Next.js context)` || `(Express response object)`
 - **name:** cookie name
