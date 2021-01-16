@@ -3,3 +3,7 @@ dist
 
 .DS_Store
 *.log*
+
+.yarn/cache
+.yarn/install-state.gz
+.yarn/build-state.yml 
