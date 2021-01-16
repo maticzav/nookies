@@ -1,5 +1,6 @@
 # nookies :cookie:
 
+![Working](https://github.com/maticzav/nookies/workflows/Release/badge.svg)
 [![npm version](https://badge.fury.io/js/nookies.svg)](https://badge.fury.io/js/nookies)
 
 > A collection of cookie helpers for Next.js
