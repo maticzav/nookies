@@ -4,6 +4,8 @@ dist
 .DS_Store
 *.log*
 
+packages/**/README.md
+
 .yarn/cache
 .yarn/install-state.gz
 .yarn/build-state.yml 

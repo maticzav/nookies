@@ -49,7 +49,7 @@ export function setCookie(
     | undefined,
   name: string,
   value: string,
-  options: cookie.CookieSerializeOptions,
+  options: cookie.CookieSerializeOptions = {},
 ) {
   // SSR
   if (ctx?.res?.getHeader && ctx.res.setHeader) {
