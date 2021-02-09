@@ -9377,7 +9377,17 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"typescript@4.1.3, typescript@^4.1.3":
+typescript@4.1.4:
+  version: 4.1.4
+  resolution: "typescript@npm:4.1.4"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 2da55c253179d360bbc846436c42a5cbbffba99dfed69593450143b1c7f46fe43eab145b84a80f51d8e6d1be6dd4a6a0885e78495a42fc34c4a768595131e148
+  languageName: node
+  linkType: hard
+
+typescript@^4.1.3:
   version: 4.1.3
   resolution: "typescript@npm:4.1.3"
   bin:
@@ -9387,7 +9397,17 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@4.1.3#builtin<compat/typescript>, typescript@patch:typescript@^4.1.3#builtin<compat/typescript>":
+"typescript@patch:typescript@4.1.4#builtin<compat/typescript>":
+  version: 4.1.4
+  resolution: "typescript@patch:typescript@npm%3A4.1.4#builtin<compat/typescript>::version=4.1.4&hash=cc6730"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: d913f9d92f15437627d35ec24bb28740c5f550843a0442977cb61be0973aa760d618b33f4426205ccff920442ed38256b7d4b48731cfb7084ce0977c07e35404
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@^4.1.3#builtin<compat/typescript>":
   version: 4.1.3
   resolution: "typescript@patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"
   bin:
@@ -9882,7 +9902,7 @@ fsevents@~2.3.1:
     prettier: 2.2.1
     pretty-quick: 3.1.0
     rimraf: 3.0.2
-    typescript: 4.1.3
+    typescript: 4.1.4
   languageName: unknown
   linkType: soft
 
