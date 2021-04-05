@@ -10,7 +10,7 @@
     "g:prettier": "cd $INIT_CWD && prettier"
   },
   "devDependencies": {
-    "husky": "4.3.8",
+    "husky": "6.0.0",
     "prettier": "2.2.1",
     "pretty-quick": "3.1.0",
     "rimraf": "3.0.2",
