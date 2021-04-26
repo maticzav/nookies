@@ -26,7 +26,7 @@
     "@types/next": "9.0.0",
     "@types/node": "14.14.41",
     "@types/set-cookie-parser": "2.4.0",
-    "terser": "5.6.1"
+    "terser": "5.7.0"
   },
   "keywords": [
     "cookie",
