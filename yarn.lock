@@ -6411,7 +6411,7 @@ fsevents@~2.3.1:
     "@types/set-cookie-parser": 2.4.0
     cookie: ^0.4.1
     set-cookie-parser: ^2.4.6
-    terser: 5.6.1
+    terser: 5.7.0
   languageName: unknown
   linkType: soft
 
@@ -8993,16 +8993,16 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"terser@npm:5.6.1":
-  version: 5.6.1
-  resolution: "terser@npm:5.6.1"
+"terser@npm:5.7.0":
+  version: 5.7.0
+  resolution: "terser@npm:5.7.0"
   dependencies:
     commander: ^2.20.0
     source-map: ~0.7.2
     source-map-support: ~0.5.19
   bin:
     terser: bin/terser
-  checksum: 55348dd25452f0a1690040f943a890dc3e33b8711b1c0592ef1114b2eca51d6ec8db8f8f769f1483b088575c07f44b7e92b3dda5f430ff6fa8c2ebd461db26f9
+  checksum: 9604fed5b093ee8000282cc69b07ff7a4e651aa13cb6e34055bf77592a4e1d0fed80c19ee80fe3a4e92f5485badcafb5aeed414fe8b5b7185599707236111900
   languageName: node
   linkType: hard
 
