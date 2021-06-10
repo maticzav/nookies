@@ -34,7 +34,7 @@ export async function getServerSideProps(ctx) {
   const cookies = nookies.get(ctx)
 
   // Set
-  nookies.set(ctx, 'fromGetInitialProps', 'value', {
+  nookies.set(ctx, 'getServerSideProps', 'value', {
     maxAge: 30 * 24 * 60 * 60,
     path: '/',
   })
