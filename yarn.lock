@@ -1565,15 +1565,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/express@npm:4.17.12":
-  version: 4.17.12
-  resolution: "@types/express@npm:4.17.12"
+"@types/express@npm:4.17.13":
+  version: 4.17.13
+  resolution: "@types/express@npm:4.17.13"
   dependencies:
     "@types/body-parser": "*"
     "@types/express-serve-static-core": ^4.17.18
     "@types/qs": "*"
     "@types/serve-static": "*"
-  checksum: b1ab50e0373095283f5a58c8c1aa7e206182d241d24279e24d754819ae39959b35996d34633b1e4b3a9d3817559abad00ec33c94b96da945a9c3d1546f3e4f70
+  checksum: 9f17da703df21e3f1cee2fe1864b9fcac2ab07c37382b972a194a3a484b41c1fbe4022b6cfe546f0171fd2d93b324dd3839512494f4cba639c2afa021e6dbb12
   languageName: node
   linkType: hard
 
@@ -6405,7 +6405,7 @@ fsevents@~2.3.1:
   resolution: "nookies@workspace:packages/nookies"
   dependencies:
     "@types/cookie": 0.4.1
-    "@types/express": 4.17.12
+    "@types/express": 4.17.13
     "@types/next": 9.0.0
     "@types/node": 14.17.4
     "@types/set-cookie-parser": 2.4.1
