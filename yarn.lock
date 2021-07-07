@@ -1614,10 +1614,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:14.17.4":
-  version: 14.17.4
-  resolution: "@types/node@npm:14.17.4"
-  checksum: 947ada8b39710c8fedf60f342b4ac1a08de8ebfbd4f09471b4e0006c2b0c7b832513e4dc2cdd455af5236910e2e725899bd9ce0aaecd097b2867d3e2ab62d8c6
+"@types/node@npm:14.17.5":
+  version: 14.17.5
+  resolution: "@types/node@npm:14.17.5"
+  checksum: bd2c9bd617d36fea3b6380f5f7bbf56b59dbfb97ba5ff6d04fdf8ec47402ba4bb4cc902087a7f40d17c91845cc949c811a366679f3421a965e80fbce328a2750
   languageName: node
   linkType: hard
 
@@ -6407,7 +6407,7 @@ fsevents@~2.3.1:
     "@types/cookie": 0.4.1
     "@types/express": 4.17.13
     "@types/next": 9.0.0
-    "@types/node": 14.17.4
+    "@types/node": 14.17.5
     "@types/set-cookie-parser": 2.4.1
     cookie: ^0.4.1
     set-cookie-parser: ^2.4.6
