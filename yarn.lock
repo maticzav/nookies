@@ -6411,7 +6411,7 @@ fsevents@~2.3.1:
     "@types/set-cookie-parser": 2.4.1
     cookie: ^0.4.1
     set-cookie-parser: ^2.4.6
-    terser: 5.7.2
+    terser: 5.8.0
   languageName: unknown
   linkType: soft
 
@@ -8458,6 +8458,16 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"source-map-support@npm:~0.5.20":
+  version: 0.5.20
+  resolution: "source-map-support@npm:0.5.20"
+  dependencies:
+    buffer-from: ^1.0.0
+    source-map: ^0.6.0
+  checksum: 2c5821ee94732b2ddbb1e1d9e61ed76ef00f72415fa686ab96d5f5c711789d55424866fa7d6c493beea380e44418053d86ec490b82c101008eac311463da84a9
+  languageName: node
+  linkType: hard
+
 "source-map-url@npm:^0.4.0":
   version: 0.4.0
   resolution: "source-map-url@npm:0.4.0"
@@ -8993,16 +9003,16 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"terser@npm:5.7.2":
-  version: 5.7.2
-  resolution: "terser@npm:5.7.2"
+"terser@npm:5.8.0":
+  version: 5.8.0
+  resolution: "terser@npm:5.8.0"
   dependencies:
     commander: ^2.20.0
     source-map: ~0.7.2
-    source-map-support: ~0.5.19
+    source-map-support: ~0.5.20
   bin:
     terser: bin/terser
-  checksum: 18f949a5c12f0de1ddd56ada109abaacbd615c8755295a93631515f74186658f6794a93389ae8c615406d6cddadadc7f5a83353928cfcdfe7a941aaec2261f31
+  checksum: 2c139adc565793d6df72136c667b410e6f424b56b72c039efe23b3b3036e4ac9015338a75d8cf9e19293d257caa26963a120996076ecb76d5f1077289afbfb4d
   languageName: node
   linkType: hard
 
