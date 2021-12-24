@@ -1676,12 +1676,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/set-cookie-parser@npm:2.4.1":
-  version: 2.4.1
-  resolution: "@types/set-cookie-parser@npm:2.4.1"
+"@types/set-cookie-parser@npm:2.4.2":
+  version: 2.4.2
+  resolution: "@types/set-cookie-parser@npm:2.4.2"
   dependencies:
     "@types/node": "*"
-  checksum: b3b0a8920d25b5c8534da276101cd288a367e6519d2d604ffb3396e9a298f5dadad4611a6fdc115f09f3035834dc2767047afbc289b621e6c381e60dc082297c
+  checksum: 7a7e1cad493c6aa4b808f4264289f6e5f8f53f70c11c58ae03d387792b5a6aab5fc5294239ab0800a1c9bf6f2b2b0f5cd8f37c1ee27ea43a2063414957dc4710
   languageName: node
   linkType: hard
 
@@ -6408,7 +6408,7 @@ fsevents@~2.3.1:
     "@types/express": 4.17.13
     "@types/next": 9.0.0
     "@types/node": 14.18.2
-    "@types/set-cookie-parser": 2.4.1
+    "@types/set-cookie-parser": 2.4.2
     cookie: ^0.4.1
     set-cookie-parser: ^2.4.6
     terser: 5.10.0
