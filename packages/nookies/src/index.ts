@@ -1,6 +1,7 @@
 import * as cookie from 'cookie'
 import * as express from 'express'
 import * as next from 'next'
+import * as nextServer from 'next/server'
 import * as setCookieParser from 'set-cookie-parser'
 import { Cookie } from 'set-cookie-parser'
 
@@ -9,18 +10,23 @@ import { areCookiesEqual, createCookie, isBrowser } from './utils'
 /**
  * Parses cookies.
  *
- * @param ctx NextJS page or API context, express context, null or undefined.
+ * @param ctx NextJS page, middleware or API context, express context, null or undefined.
  * @param options Options that we pass down to `cookie` library.
  */
 export function parseCookies(
   ctx?:
     | Pick<next.NextPageContext, 'req'>
     | { req: next.NextApiRequest }
+    | { req: nextServer.NextRequest }
     | { req: express.Request }
     | null
     | undefined,
   options?: cookie.CookieParseOptions,
 ) {
+  if (ctx?.req instanceof nextServer.NextRequest) {
+    return ctx.req.cookies
+  }
+
   if (ctx?.req?.headers?.cookie) {
     return cookie.parse(ctx.req.headers.cookie as string, options)
   }
@@ -35,7 +41,7 @@ export function parseCookies(
 /**
  * Sets a cookie.
  *
- * @param ctx NextJS page or API context, express context, null or undefined.
+ * @param ctx NextJS page, middleware or API context, express context, null or undefined.
  * @param name The name of your cookie.
  * @param value The value of your cookie.
  * @param options Options that we pass down to `cookie` library.
@@ -44,6 +50,7 @@ export function setCookie(
   ctx:
     | Pick<next.NextPageContext, 'res'>
     | { res: next.NextApiResponse }
+    | { res: nextServer.NextResponse }
     | { res: express.Response }
     | null
     | undefined,
@@ -51,6 +58,11 @@ export function setCookie(
   value: string,
   options: cookie.CookieSerializeOptions = {},
 ) {
+  if (ctx?.res instanceof nextServer.NextResponse) {
+    ctx.res.cookie(name, value, options)
+    return {}
+  }
+
   // SSR
   if (ctx?.res?.getHeader && ctx.res.setHeader) {
     // Check if response has finished and warn about it.
