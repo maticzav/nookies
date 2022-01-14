@@ -50,6 +50,7 @@ export function setCookie(
   ctx:
     | Pick<next.NextPageContext, 'res'>
     | { res: next.NextApiResponse }
+    | { res: nextServer.NextResponse }
     | { res: express.Response }
     | null
     | undefined,
@@ -57,6 +58,11 @@ export function setCookie(
   value: string,
   options: cookie.CookieSerializeOptions = {},
 ) {
+  if (ctx?.res instanceof nextServer.NextResponse) {
+    ctx.res.cookie(name, value, options)
+    return {}
+  }
+
   // SSR
   if (ctx?.res?.getHeader && ctx.res.setHeader) {
     // Check if response has finished and warn about it.
