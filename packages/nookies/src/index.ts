@@ -1,6 +1,7 @@
 import * as cookie from 'cookie'
 import * as express from 'express'
 import * as next from 'next'
+import * as nextServer from 'next/server'
 import * as setCookieParser from 'set-cookie-parser'
 import { Cookie } from 'set-cookie-parser'
 
@@ -16,11 +17,16 @@ export function parseCookies(
   ctx?:
     | Pick<next.NextPageContext, 'req'>
     | { req: next.NextApiRequest }
+    | { req: nextServer.NextRequest }
     | { req: express.Request }
     | null
     | undefined,
   options?: cookie.CookieParseOptions,
 ) {
+  if (ctx?.req instanceof nextServer.NextRequest) {
+    return ctx.req.cookies
+  }
+
   if (ctx?.req?.headers?.cookie) {
     return cookie.parse(ctx.req.headers.cookie as string, options)
   }
