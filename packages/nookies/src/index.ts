@@ -10,7 +10,7 @@ import { areCookiesEqual, createCookie, isBrowser } from './utils'
 /**
  * Parses cookies.
  *
- * @param ctx NextJS page or API context, express context, null or undefined.
+ * @param ctx NextJS page, middleware or API context, express context, null or undefined.
  * @param options Options that we pass down to `cookie` library.
  */
 export function parseCookies(
@@ -41,7 +41,7 @@ export function parseCookies(
 /**
  * Sets a cookie.
  *
- * @param ctx NextJS page or API context, express context, null or undefined.
+ * @param ctx NextJS page, middleware or API context, express context, null or undefined.
  * @param name The name of your cookie.
  * @param value The value of your cookie.
  * @param options Options that we pass down to `cookie` library.
