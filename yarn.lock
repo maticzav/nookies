@@ -1905,6 +1905,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"acorn@npm:^8.5.0":
+  version: 8.7.0
+  resolution: "acorn@npm:8.7.0"
+  bin:
+    acorn: bin/acorn
+  checksum: d7839c37c6038e5f1b7d1aca9756d52d405a6f1287822574f98e7fada1413bd73cdb57d1e23bd3091ab00bf3b3584cf742f0b59fb77bcaf03d4875870156a801
+  languageName: node
+  linkType: hard
+
 "adjust-sourcemap-loader@npm:2.0.0":
   version: 2.0.0
   resolution: "adjust-sourcemap-loader@npm:2.0.0"
@@ -6411,7 +6420,7 @@ fsevents@~2.3.1:
     "@types/set-cookie-parser": 2.4.2
     cookie: ^0.4.1
     set-cookie-parser: ^2.4.6
-    terser: 5.10.0
+    terser: 5.12.0
   languageName: unknown
   linkType: soft
 
@@ -8990,21 +8999,17 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"terser@npm:5.10.0":
-  version: 5.10.0
-  resolution: "terser@npm:5.10.0"
+"terser@npm:5.12.0":
+  version: 5.12.0
+  resolution: "terser@npm:5.12.0"
   dependencies:
+    acorn: ^8.5.0
     commander: ^2.20.0
     source-map: ~0.7.2
     source-map-support: ~0.5.20
-  peerDependencies:
-    acorn: ^8.5.0
-  peerDependenciesMeta:
-    acorn:
-      optional: true
   bin:
     terser: bin/terser
-  checksum: d531747179101d4cb0342ee53c643cfdf5376912953076102c2b89e2418d899a4c2d3b759ff74a4c9f99601d9ece83be9cb9519da7e9d27670fc6bd1224b82c1
+  checksum: 197fe3ddc0b66bf4ab08576f2d7f3fd2230e5ee8f6c6653560a7d50ccd17c7127dce3420de47b1486868e16ced51120c72044bf08d771ad7afd7c5d960fc672d
   languageName: node
   linkType: hard
 
