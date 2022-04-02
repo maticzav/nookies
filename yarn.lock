@@ -4916,12 +4916,12 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"husky@npm:6.0.0":
-  version: 6.0.0
-  resolution: "husky@npm:6.0.0"
+"husky@npm:7.0.4":
+  version: 7.0.4
+  resolution: "husky@npm:7.0.4"
   bin:
     husky: lib/bin.js
-  checksum: 61e1f7f53f3c969d361c2a1d4ed8018b9447406ea6cd644a2526d18b76877d135001d8cbd48a1d201fc1614d96995e691ecd2b82a8d8513a6b4a313da1188ccd
+  checksum: 4052668d7cc948d722cafbd9194adc0726d2f29d0139a552394f1983357bf2eaf3205923753ba6b1cfc9bb5eb6fcaac5db0dea900ccd9150c1620edb30496b85
   languageName: node
   linkType: hard
 
@@ -9741,7 +9741,7 @@ typescript@^4.1.3:
   version: 0.0.0-use.local
   resolution: "workspace@workspace:."
   dependencies:
-    husky: 6.0.0
+    husky: 7.0.4
     prettier: 2.6.2
     pretty-quick: 3.1.3
     rimraf: 3.0.2
