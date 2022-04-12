@@ -3187,10 +3187,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie@npm:^0.4.1":
-  version: 0.4.1
-  resolution: "cookie@npm:0.4.1"
-  checksum: b8e0928e3e7aba013087974b33a6eec730b0a68b7ec00fc3c089a56ba2883bcf671252fc2ed64775aa1ca64796b6e1f6fdddba25a66808aef77614d235fd3e06
+"cookie@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "cookie@npm:0.5.0"
+  checksum: d8775419ba4dd8cc169aa7e070b0d33ca3d9d9a456b0c871b15f492a2032962f7c436c7f1fa81d9275c6b3af27611e68f70714da9ff3c15ebf6bb69ed9e0333a
   languageName: node
   linkType: hard
 
@@ -6418,7 +6418,7 @@ fsevents@~2.3.1:
     "@types/next": 9.0.0
     "@types/node": 14.18.12
     "@types/set-cookie-parser": 2.4.2
-    cookie: ^0.4.1
+    cookie: ^0.5.0
     set-cookie-parser: ^2.4.6
     terser: 5.12.1
   languageName: unknown
