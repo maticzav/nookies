@@ -1536,10 +1536,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/cookie@npm:0.4.1":
-  version: 0.4.1
-  resolution: "@types/cookie@npm:0.4.1"
-  checksum: 9d8e6da76f96dd4e0bcba46abb555dd14ffddd168e15afd77c2c1b4afbcce723c5c3245ddafc0615def0debc35054c072165698af1d95d9605b3f799c97a79a1
+"@types/cookie@npm:0.5.0":
+  version: 0.5.0
+  resolution: "@types/cookie@npm:0.5.0"
+  checksum: 501271f67ae2660f3909f2b133bfb0251270f672121c7b1e2f1b5c408baadf0a56cd58f051f1126468625bf94bd7eeeea1b191bf273ae6d978de0ba12390ffc2
   languageName: node
   linkType: hard
 
@@ -6413,7 +6413,7 @@ fsevents@~2.3.1:
   version: 0.0.0-use.local
   resolution: "nookies@workspace:packages/nookies"
   dependencies:
-    "@types/cookie": 0.4.1
+    "@types/cookie": 0.5.0
     "@types/express": 4.17.13
     "@types/next": 9.0.0
     "@types/node": 14.18.12
