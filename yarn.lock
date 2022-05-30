@@ -1416,6 +1416,58 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jridgewell/gen-mapping@npm:^0.3.0":
+  version: 0.3.1
+  resolution: "@jridgewell/gen-mapping@npm:0.3.1"
+  dependencies:
+    "@jridgewell/set-array": ^1.0.0
+    "@jridgewell/sourcemap-codec": ^1.4.10
+    "@jridgewell/trace-mapping": ^0.3.9
+  checksum: c77767785e6778df5ec8e8c55475a91f320a932999e064b6e2c0f97e79b66396e46b6730e3956c90c1e8b723639ef9e4b957e9986610d736896bdb4825f36dea
+  languageName: node
+  linkType: hard
+
+"@jridgewell/resolve-uri@npm:^3.0.3":
+  version: 3.0.7
+  resolution: "@jridgewell/resolve-uri@npm:3.0.7"
+  checksum: 742a2baf8f7a69e6b54c23ddca49bb42ceab437d4c35b5d3e71a2edbc6b0a83d3bfb230b651d5f83c2bbdebf1a3cfc907e063ac129cdbe20376eda8edde7265f
+  languageName: node
+  linkType: hard
+
+"@jridgewell/set-array@npm:^1.0.0":
+  version: 1.1.1
+  resolution: "@jridgewell/set-array@npm:1.1.1"
+  checksum: e4bf8201564b571f71a1a6c98308271816339158e0981c31ce2063128e30023cfa5e1100b6529b8c6847414a4dc1b0fbb2084c4ea6963b2505a9585ddf893252
+  languageName: node
+  linkType: hard
+
+"@jridgewell/source-map@npm:^0.3.2":
+  version: 0.3.2
+  resolution: "@jridgewell/source-map@npm:0.3.2"
+  dependencies:
+    "@jridgewell/gen-mapping": ^0.3.0
+    "@jridgewell/trace-mapping": ^0.3.9
+  checksum: 9a724d9c2762eb5003c51ef4825a04c4a04fad7122b8654e3532449b0536f012c7796400cc4267d4f63d57e662c4744d174e33734a73718ef65d92d5d3f47fc9
+  languageName: node
+  linkType: hard
+
+"@jridgewell/sourcemap-codec@npm:^1.4.10":
+  version: 1.4.13
+  resolution: "@jridgewell/sourcemap-codec@npm:1.4.13"
+  checksum: 4681cec99a4966a07119e933d90b6edea1d0b6e8ed87a220b094f9e5ef11a822f270fb44404207909284a429f2e8345e00af0ef822b06e7cbb854b7083fafd5b
+  languageName: node
+  linkType: hard
+
+"@jridgewell/trace-mapping@npm:^0.3.9":
+  version: 0.3.13
+  resolution: "@jridgewell/trace-mapping@npm:0.3.13"
+  dependencies:
+    "@jridgewell/resolve-uri": ^3.0.3
+    "@jridgewell/sourcemap-codec": ^1.4.10
+  checksum: 7f8105125e27a9007d473145e9e420fa2dc721f01773ea94fe3eee95c825f5a8f9cad9fe39591aee782e7dabb9e5734aa93225d1dbe0131b1bf6226d4fbb9b56
+  languageName: node
+  linkType: hard
+
 "@next/env@npm:10.0.5":
   version: 10.0.5
   resolution: "@next/env@npm:10.0.5"
@@ -6420,7 +6472,7 @@ fsevents@~2.3.1:
     "@types/set-cookie-parser": 2.4.2
     cookie: ^0.5.0
     set-cookie-parser: ^2.4.6
-    terser: 5.13.1
+    terser: 5.14.0
   languageName: unknown
   linkType: soft
 
@@ -8498,7 +8550,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"source-map@npm:0.8.0-beta.0, source-map@npm:~0.8.0-beta.0":
+"source-map@npm:0.8.0-beta.0":
   version: 0.8.0-beta.0
   resolution: "source-map@npm:0.8.0-beta.0"
   dependencies:
@@ -8999,17 +9051,17 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"terser@npm:5.13.1":
-  version: 5.13.1
-  resolution: "terser@npm:5.13.1"
+"terser@npm:5.14.0":
+  version: 5.14.0
+  resolution: "terser@npm:5.14.0"
   dependencies:
+    "@jridgewell/source-map": ^0.3.2
     acorn: ^8.5.0
     commander: ^2.20.0
-    source-map: ~0.8.0-beta.0
     source-map-support: ~0.5.20
   bin:
     terser: bin/terser
-  checksum: 0a29d97fd41f89d8cfe0664221e47ae418e7dcda20e9c42824e2d6e25ac1029951e0e64158b68ada2c2df9b70c21ddb8aee53d15dbbd66b85ba94c9899cdfcb1
+  checksum: 2d5a8a4b0c1bfcb5ecc0c69e0eb9e5cf387a8eaccf6fcc573a89a36c066a57d8e5ef50ebd8c801e74241142dfeba3bd65904441f6805117c192a58c85e5f94b9
   languageName: node
   linkType: hard
 
