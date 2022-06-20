@@ -3,5 +3,15 @@
   "automerge": true,
   "major": {
     "automerge": false
-  }
+  },
+  "packageRules": [
+    {
+      "groupName": "express",
+      "matchPackageNames": ["@types/express", "express"]
+    },
+    {
+      "groupName": "cookie",
+      "matchPackageNames": ["@types/cookie", "cookie"]
+    }
+  ]
 }
