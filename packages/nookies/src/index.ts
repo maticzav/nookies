@@ -14,15 +14,20 @@ import { areCookiesEqual, createCookie, isBrowser } from './utils'
  */
 export function parseCookies(
   ctx?:
-    | Pick<next.NextPageContext, 'req'>
-    | { req: next.NextApiRequest }
-    | { req: express.Request }
+    | Pick<next.NextPageContext, 'req' | 'res'>
+    | { req: next.NextApiRequest, res: next.NextApiResponse }
+    | { req: express.Request, res: express.Response }
     | null
     | undefined,
   options?: cookie.CookieParseOptions,
 ) {
-  if (ctx?.req?.headers?.cookie) {
-    return cookie.parse(ctx.req.headers.cookie as string, options)
+  if (ctx) {
+    const reqCookies = cookie.parse(ctx.req?.headers?.cookie || '' as string, options)
+    const resCookies = setCookieParser.parse(ctx.res?.getHeader('Set-Cookie') || '', {
+      decodeValues: true
+    }).reduce((acc, cookie) => ({ ...acc, [cookie.name]: cookie.value }), {});
+
+    return {...reqCookies, ...resCookies}
   }
 
   if (isBrowser()) {
