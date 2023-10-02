@@ -17,12 +17,12 @@
     "minify": "terser -c -m --source-map \"content='./dist/index.js.map',url='index.min.js.map'\" -o dist/index.min.js -- dist/index.js"
   },
   "dependencies": {
+    "@types/cookie": "0.5.1",
+    "@types/express": "4.17.13",
     "cookie": "^0.5.0",
     "set-cookie-parser": "^2.4.6"
   },
   "devDependencies": {
-    "@types/cookie": "0.5.1",
-    "@types/express": "4.17.13",
     "@types/next": "9.0.0",
     "@types/node": "14.18.21",
     "@types/set-cookie-parser": "2.4.2",
