@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@types/cookie": "0.5.1",
-    "@types/express": "4.17.13",
+    "@types/express": "5.0.6",
     "@types/next": "9.0.0",
     "@types/node": "14.18.63",
     "@types/set-cookie-parser": "2.4.10",
