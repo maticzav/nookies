@@ -93,7 +93,7 @@ export function setCookie(
           parsedCookie.name,
           parsedCookie.value,
           {
-            // we prevent reencoding by default, but you might override it
+            // we prevent re-encoding by default, but you might override it
             encode: (val: string) => val,
             ...(parsedCookie as cookie.CookieSerializeOptions),
           },

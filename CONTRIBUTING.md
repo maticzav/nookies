@@ -1,6 +1,6 @@
 :wave:
 
-Thank you for reading this file! We'd love to see you help us make this package even better than it is. Since we are all working on Kayu in our free time, it's important that we follow some set of guidelines to make communication easier. Read this guideline to learn what we have in mind.
+Thank you for reading this file! We'd love to see you help us make this package even better than it is. Since we are all working on nookies in our free time, it's important that we follow some set of guidelines to make communication easier. Read this guideline to learn what we have in mind.
 
 ### Language & Community
 
@@ -18,7 +18,7 @@ Alright, so you want a new feature, right? Me too! Everyone wants a new feature 
 
 This is a community driven project. Nobody is paid to work on it. Keep that in mind at all times.
 
-To save people working on Kayu some time, first check other issues and discussions to see if somebody has requested a similar feature. It's a lot easier for us to prioritise tasks and implement a feature if we see a flourishing discussion in one of the feature requests. Share your thoughts, do research.
+To save people working on nookies some time, first check other issues and discussions to see if somebody has requested a similar feature. It's a lot easier for us to prioritise tasks and implement a feature if we see a flourishing discussion in one of the feature requests. Share your thoughts, do research.
 
 We are inclined to read well structured arguments. If your request hasn't received much attention in say a month, try to do some research on it and share your findings. The more knowledge there already is, the easier (and faster) your feature will be implemented.
 
